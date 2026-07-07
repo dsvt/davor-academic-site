@@ -1,0 +1,8 @@
+---
+import { profile } from '@data/profile';
+---
+<div class="profile-links" aria-label="External profiles">
+  {profile.links.map((link) => (
+    <a href={link.href} rel="me noopener noreferrer" target="_blank">{link.label}</a>
+  ))}
+</div>

@@ -1,0 +1,20 @@
+---
+import Layout from '@components/Layout.astro';
+import { profile } from '@data/profile';
+---
+<Layout title="Advising" description="Advisory, executive training, and collaboration topics.">
+  <section class="section page-title">
+    <p class="eyebrow">Advising and collaboration</p>
+    <h1>Academic, institutional, and executive engagement</h1>
+    <p class="lead">A small page for talks, strategic advising, executive training, and research collaboration.</p>
+  </section>
+
+  <section class="section grid-three">
+    {profile.services.map((service) => (
+      <article class="content-card">
+        <h2>{service}</h2>
+        <p>Clarify scope, audience, and examples. Keep the tone academic and evidence-based rather than sales-heavy.</p>
+      </article>
+    ))}
+  </section>
+</Layout>

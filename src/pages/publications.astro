@@ -1,0 +1,31 @@
+---
+import Layout from '@components/Layout.astro';
+import PublicationList from '@components/PublicationList.astro';
+import { publicationsByYear } from '@data/publications';
+
+const recent = publicationsByYear.filter((pub) => pub.status === 'recent');
+const selected = publicationsByYear.filter((pub) => pub.status === 'selected');
+const legacy = publicationsByYear.filter((pub) => pub.status === 'legacy');
+---
+<Layout title="Publications" description="Selected and recent publications by Davor Svetinovic.">
+  <section class="section page-title">
+    <p class="eyebrow">Publications</p>
+    <h1>Selected and recent publications</h1>
+    <p class="lead">Seeded from the current site plus recent DBLP-visible work. Treat this list as a curated starting point, not a complete bibliography.</p>
+  </section>
+
+  <section class="section">
+    <h2>Recent publications to review</h2>
+    <PublicationList publications={recent} />
+  </section>
+
+  <section class="section">
+    <h2>Selected publications</h2>
+    <PublicationList publications={selected} />
+  </section>
+
+  <section class="section">
+    <h2>Legacy selected publications from the current site</h2>
+    <PublicationList publications={legacy} />
+  </section>
+</Layout>

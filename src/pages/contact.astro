@@ -1,0 +1,17 @@
+---
+import Layout from '@components/Layout.astro';
+import ProfileLinks from '@components/ProfileLinks.astro';
+---
+<Layout title="Contact" description="Contact and external profiles.">
+  <section class="section page-title">
+    <p class="eyebrow">Contact</p>
+    <h1>Contact and profiles</h1>
+    <p class="lead">Use this page for email, institutional profile links, and collaboration instructions.</p>
+  </section>
+
+  <section class="section content-card">
+    <h2>External profiles</h2>
+    <ProfileLinks />
+    <p class="muted">Add a public email address only if you want it indexed by search engines. Otherwise link to an institutional profile or contact form.</p>
+  </section>
+</Layout>

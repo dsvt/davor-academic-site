@@ -1,0 +1,54 @@
+---
+import Layout from '@components/Layout.astro';
+import ProfileLinks from '@components/ProfileLinks.astro';
+import PublicationList from '@components/PublicationList.astro';
+import { profile } from '@data/profile';
+import { publicationsByYear } from '@data/publications';
+
+const featuredPublications = publicationsByYear.filter((publication) => publication.status !== 'legacy').slice(0, 6);
+---
+<Layout title={profile.name} description={profile.tagline}>
+  <section class="hero section">
+    <div class="hero-copy">
+      <p class="eyebrow">{profile.location}</p>
+      <h1>{profile.name}</h1>
+      <p class="lead">{profile.title}</p>
+      <p>{profile.tagline}</p>
+      <ProfileLinks />
+    </div>
+    <aside class="hero-card" aria-label="Profile summary">
+      <h2>Research focus</h2>
+      <ul>
+        {profile.researchAreas.map((area) => <li>{area}</li>)}
+      </ul>
+    </aside>
+  </section>
+
+  <section class="section grid-two">
+    <div>
+      <h2>About</h2>
+      <p>{profile.shortBio}</p>
+      {profile.longBio.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+    <div class="note-card">
+      <h2>Verification note</h2>
+      <p>{profile.currentRoleNote}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <h2>Selected and recent publications</h2>
+      <a href="/publications">View all seeded publications</a>
+    </div>
+    <PublicationList publications={featuredPublications} />
+  </section>
+
+  <section class="section grid-three">
+    {profile.services.map((service) => (
+      <article class="mini-card">
+        <h2>{service}</h2>
+      </article>
+    ))}
+  </section>
+</Layout>
