@@ -1,20 +1,35 @@
 ---
 import Layout from '@components/Layout.astro';
-import { profile } from '@data/profile';
+import { advisingTopics } from '@data/profile';
 ---
 <Layout title="Advising" description="Advisory, executive training, and collaboration topics.">
   <section class="section page-title">
     <p class="eyebrow">Advising and collaboration</p>
     <h1>Academic, institutional, and executive engagement</h1>
-    <p class="lead">A small page for talks, strategic advising, executive training, and research collaboration.</p>
+    <p class="lead">
+      Talks, advisory work, executive education, and research collaboration tied to blockchain,
+      cybersecurity, AI, and trustworthy digital infrastructure.
+    </p>
   </section>
 
   <section class="section grid-three">
-    {profile.services.map((service) => (
+    {advisingTopics.map((topic) => (
       <article class="content-card">
-        <h2>{service}</h2>
-        <p>Clarify scope, audience, and examples. Keep the tone academic and evidence-based rather than sales-heavy.</p>
+        <h2>{topic.title}</h2>
+        <p>{topic.summary}</p>
+        <ul>
+          {topic.examples.map((example) => <li>{example}</li>)}
+        </ul>
       </article>
     ))}
+  </section>
+
+  <section class="section narrow">
+    <h2>Collaboration fit</h2>
+    <p>
+      Good-fit conversations usually connect to research, institutional risk, education, or public
+      digital infrastructure. It keeps consulting terms, personal contact details, and engagement
+      details off the public page.
+    </p>
   </section>
 </Layout>

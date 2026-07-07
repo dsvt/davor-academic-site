@@ -14,7 +14,8 @@ const {
 } = Astro.props;
 
 const pageTitle = title === profile.name ? profile.name : `${title} | ${profile.name}`;
-const canonical = new URL(Astro.url.pathname, profile.canonicalUrl).toString();
+const canonicalPath = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
+const canonical = new URL(canonicalPath, profile.canonicalUrl).toString();
 ---
 <!doctype html>
 <html lang="en">

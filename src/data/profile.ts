@@ -1,30 +1,120 @@
+export type ResearchTheme = {
+  title: string;
+  summary: string;
+  topics: string[];
+};
+
+export type AdvisingTopic = {
+  title: string;
+  summary: string;
+  examples: string[];
+};
+
+export const researchThemes: ResearchTheme[] = [
+  {
+    title: 'Blockchain and Web3 systems',
+    summary:
+      'Research on programmable blockchains, privacy, decentralized finance, blockchain oracles, censorship, and protocol design. The public record includes work on stealth addresses, Ethereum-based federated learning, blockchain censorship, decentralized energy trading, and trust in cryptocurrency systems.',
+    topics: [
+      'Privacy and identity in programmable blockchains',
+      'Blockchain oracles, censorship, and trust assumptions',
+      'Decentralized finance and energy trading'
+    ]
+  },
+  {
+    title: 'Cybersecurity for cyber-physical systems',
+    summary:
+      'Work on security requirements, threat modeling, and attack detection for systems where software connects to physical infrastructure. Public publications cover smart grids, microgrids, IoT systems, decentralized energy markets, and cyber-physical security for industrial settings.',
+    topics: [
+      'Smart-grid and microgrid security',
+      'Threat models for cyber-physical infrastructure',
+      'IoT privacy and security requirements'
+    ]
+  },
+  {
+    title: 'Secure AI and federated learning',
+    summary:
+      'Recent work studies decentralized and privacy-preserving federated learning, including blockchain-supported learning systems, poisoning resistance, cross-device trust, and links between blockchain infrastructure and trustworthy AI.',
+    topics: [
+      'Decentralized federated learning',
+      'Data-poisoning defenses and client trust',
+      'Blockchain support for explainable and trustworthy AI'
+    ]
+  },
+  {
+    title: 'Software and requirements engineering',
+    summary:
+      'Earlier and continuing work focuses on requirements engineering, software architecture, goal modeling, security requirements, and architecture recovery. This thread connects older work on use-case statecharts and domain analysis with newer requirements questions in Web3 systems.',
+    topics: [
+      'Requirements engineering for complex systems',
+      'Security requirements analysis',
+      'Software architecture and architecture recovery'
+    ]
+  },
+  {
+    title: 'Digital governance and trustworthy infrastructure',
+    summary:
+      'Public-facing advisory topics stay close to the research record: blockchain governance, public-sector transparency, infrastructure security, and executive education around AI, blockchain, cybersecurity, and digital systems.',
+    topics: [
+      'Blockchain governance and transparency',
+      'Digital infrastructure risk',
+      'Executive education for emerging technology'
+    ]
+  }
+];
+
+export const advisingTopics: AdvisingTopic[] = [
+  {
+    title: 'Blockchain governance and transparency',
+    summary:
+      'Advising on how blockchain systems can support auditability, accountability, and institutional trust without ignoring privacy, governance, or implementation limits.',
+    examples: [
+      'Public-sector blockchain use cases',
+      'Governance models for decentralized systems',
+      'Risk review for Web3 and digital-asset initiatives'
+    ]
+  },
+  {
+    title: 'Cybersecurity for infrastructure and public systems',
+    summary:
+      'Security guidance rooted in research on smart grids, IoT, cyber-physical systems, and software requirements, with attention to threat models and operational constraints.',
+    examples: [
+      'Security requirements and threat modeling',
+      'Smart-grid and IoT risk review',
+      'Cybersecurity briefings for technical and executive teams'
+    ]
+  },
+  {
+    title: 'Executive training on AI, blockchain, and cybersecurity',
+    summary:
+      'Briefings and short courses for leaders who need clear technical grounding before making policy, investment, or governance decisions.',
+    examples: [
+      'AI and blockchain foundations',
+      'Cybersecurity and digital-governance workshops',
+      'Research translation for senior decision-makers'
+    ]
+  }
+];
+
+// TODO: VERIFY the exact current academic title and institutional affiliation
+// against the latest public CV before rendering either on the site.
+// TODO: VERIFY whether the Stanford/Elsevier top-scientist statement from the
+// old site should be included. It is intentionally omitted from rendered pages.
 export const profile = {
   name: 'Davor Svetinovic',
   canonicalUrl: 'https://www.davors.com',
-  title: 'Computer Science Professor and Research Leader',
+  title: 'Computer scientist working on blockchain, cybersecurity, secure AI, and software engineering',
   tagline:
-    'Blockchain, cybersecurity, secure AI, federated learning, software engineering, and intelligent decentralized systems.',
+    'Research on trustworthy decentralized systems, cyber-physical security, federated learning, and requirements engineering.',
   location: 'United Arab Emirates',
   shortBio:
-    'Davor Svetinovic is a UAE-based computer scientist whose work connects blockchain technology, cybersecurity, federated learning, software engineering, smart-grid security, IoT security, and decentralized systems.',
+    'Davor Svetinovic is a UAE-based computer scientist whose work sits at the intersection of blockchain systems, cybersecurity, federated learning, and software engineering.',
   longBio: [
-    'His research bridges academic work and practical applications in secure, trustworthy, and decentralized digital infrastructure.',
-    'The site should serve as a concise academic profile, a maintained publication hub, and a professional entry point for research, collaboration, invited talks, executive education, and advisory work.'
+    'His public research record includes secure decentralized energy trading, smart-grid and IoT security, blockchain oracles, trustworthy AI, and requirements engineering for complex systems.',
+    'This site is a concise academic profile and curated publication hub. For a complete publication index, use the linked DBLP, ORCID, and Google Scholar profiles.'
   ],
-  currentRoleNote:
-    'Confirm the exact current title and affiliation before launch. Public sources vary between Professor, Associate Professor, Khalifa University, and ADIA Lab Visiting Fellow contexts.',
-  researchAreas: [
-    'Blockchain and Web3 systems',
-    'Cybersecurity and cyber-physical systems security',
-    'Secure AI and federated learning',
-    'Software and requirements engineering',
-    'Digital economy, governance, and trustworthy infrastructure'
-  ],
-  services: [
-    'Strategic advisory on blockchain technology for governance and transparency',
-    'Cybersecurity guidance for critical infrastructure and public-sector systems',
-    'Executive training on AI, blockchain, cybersecurity, and digital governance'
-  ],
+  researchAreas: researchThemes.map((theme) => theme.title),
+  services: advisingTopics.map((topic) => topic.title),
   links: [
     {
       label: 'LinkedIn',

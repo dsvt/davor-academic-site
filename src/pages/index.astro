@@ -2,10 +2,12 @@
 import Layout from '@components/Layout.astro';
 import ProfileLinks from '@components/ProfileLinks.astro';
 import PublicationList from '@components/PublicationList.astro';
-import { profile } from '@data/profile';
+import { advisingTopics, profile, researchThemes } from '@data/profile';
 import { publicationsByYear } from '@data/publications';
 
-const featuredPublications = publicationsByYear.filter((publication) => publication.status !== 'legacy').slice(0, 6);
+const featuredPublications = publicationsByYear
+  .filter((publication) => publication.status === 'recent' || publication.status === 'selected')
+  .slice(0, 6);
 ---
 <Layout title={profile.name} description={profile.tagline}>
   <section class="hero section">
@@ -19,7 +21,7 @@ const featuredPublications = publicationsByYear.filter((publication) => publicat
     <aside class="hero-card" aria-label="Profile summary">
       <h2>Research focus</h2>
       <ul>
-        {profile.researchAreas.map((area) => <li>{area}</li>)}
+        {researchThemes.map((theme) => <li>{theme.title}</li>)}
       </ul>
     </aside>
   </section>
@@ -31,23 +33,29 @@ const featuredPublications = publicationsByYear.filter((publication) => publicat
       {profile.longBio.map((paragraph) => <p>{paragraph}</p>)}
     </div>
     <div class="note-card">
-      <h2>Verification note</h2>
-      <p>{profile.currentRoleNote}</p>
+      <h2>Public-source approach</h2>
+      <p>
+        The site avoids unverified publication totals, rankings, awards, current affiliations,
+        and private contact details. It points readers to maintained external profiles for the
+        full public record.
+      </p>
+      <p><a href="/contact">View public profiles</a></p>
     </div>
   </section>
 
   <section class="section">
     <div class="section-heading">
       <h2>Selected and recent publications</h2>
-      <a href="/publications">View all seeded publications</a>
+      <a href="/publications">View curated list</a>
     </div>
     <PublicationList publications={featuredPublications} />
   </section>
 
   <section class="section grid-three">
-    {profile.services.map((service) => (
+    {advisingTopics.map((topic) => (
       <article class="mini-card">
-        <h2>{service}</h2>
+        <h2>{topic.title}</h2>
+        <p>{topic.summary}</p>
       </article>
     ))}
   </section>
