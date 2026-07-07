@@ -1,19 +1,25 @@
 ---
 import Layout from '@components/Layout.astro';
-import { profile } from '@data/profile';
+import { researchThemes } from '@data/profile';
 ---
-<Layout title="Research" description="Research areas and themes for Davor Svetinovic.">
+<Layout title="Research" description="Research themes for Davor Svetinovic.">
   <section class="section page-title">
     <p class="eyebrow">Research</p>
-    <h1>Research areas</h1>
-    <p class="lead">A compact map of current and historical research themes.</p>
+    <h1>Research themes</h1>
+    <p class="lead">
+      A concise map of public research threads across blockchain systems, cybersecurity,
+      secure AI, and software engineering.
+    </p>
   </section>
 
   <section class="section grid-two">
-    {profile.researchAreas.map((area) => (
+    {researchThemes.map((theme) => (
       <article class="content-card">
-        <h2>{area}</h2>
-        <p>Replace this paragraph with a concise 80-120 word description, representative projects, and links to selected papers.</p>
+        <h2>{theme.title}</h2>
+        <p>{theme.summary}</p>
+        <ul>
+          {theme.topics.map((topic) => <li>{topic}</li>)}
+        </ul>
       </article>
     ))}
   </section>

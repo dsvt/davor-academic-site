@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro check && ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "astro preview",
-    "check": "astro check",
+    "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
     "import:dblp": "node scripts/import-dblp.mjs"
   },
   "dependencies": {
