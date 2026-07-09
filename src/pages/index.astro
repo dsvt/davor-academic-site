@@ -5,9 +5,7 @@ import PublicationList from '@components/PublicationList.astro';
 import { advisingTopics, profile, researchThemes } from '@data/profile';
 import { publicationsByYear } from '@data/publications';
 
-const featuredPublications = publicationsByYear
-  .filter((publication) => publication.status === 'recent' || publication.status === 'selected')
-  .slice(0, 6);
+const featuredPublications = publicationsByYear.slice(0, 4);
 ---
 <Layout title={profile.name} description={profile.tagline}>
   <section class="hero section">
@@ -18,12 +16,9 @@ const featuredPublications = publicationsByYear
       <p>{profile.tagline}</p>
       <ProfileLinks />
     </div>
-    <aside class="hero-card" aria-label="Profile summary">
-      <h2>Research focus</h2>
-      <ul>
-        {researchThemes.map((theme) => <li>{theme.title}</li>)}
-      </ul>
-    </aside>
+    <figure class="hero-photo">
+      <img src={profile.photo.src} alt={profile.photo.alt} width="480" height="343" />
+    </figure>
   </section>
 
   <section class="section grid-two">
@@ -32,21 +27,21 @@ const featuredPublications = publicationsByYear
       <p>{profile.shortBio}</p>
       {profile.longBio.map((paragraph) => <p>{paragraph}</p>)}
     </div>
-    <div class="note-card">
-      <h2>Public-source approach</h2>
-      <p>
-        The site avoids unverified publication totals, rankings, awards, current affiliations,
-        and private contact details. It points readers to maintained external profiles for the
-        full public record.
-      </p>
-      <p><a href="/contact">View public profiles</a></p>
+    <div class="content-card">
+      <h2>Research focus</h2>
+      <ul>
+        {researchThemes.map((theme) => <li>{theme.title}</li>)}
+      </ul>
     </div>
   </section>
 
   <section class="section">
     <div class="section-heading">
-      <h2>Selected and recent publications</h2>
-      <a href="/publications">View curated list</a>
+      <h2>Selected publications</h2>
+      <div class="link-row">
+        <a href="/publications">View selected publications</a>
+        <a href={profile.scholarUrl} target="_blank" rel="noopener noreferrer">Google Scholar for full list</a>
+      </div>
     </div>
     <PublicationList publications={featuredPublications} />
   </section>

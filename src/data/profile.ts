@@ -96,13 +96,14 @@ export const advisingTopics: AdvisingTopic[] = [
   }
 ];
 
-// TODO: VERIFY the exact current academic title and institutional affiliation
-// against the latest public CV before rendering either on the site.
-// TODO: VERIFY whether the Stanford/Elsevier top-scientist statement from the
-// old site should be included. It is intentionally omitted from rendered pages.
 export const profile = {
   name: 'Davor Svetinovic',
   canonicalUrl: 'https://www.davors.com',
+  scholarUrl: 'https://scholar.google.com/citations?user=LpV-B0IAAAAJ',
+  photo: {
+    src: '/davor-talk.jpg',
+    alt: 'Davor Svetinovic giving a talk'
+  },
   title: 'Computer scientist working on blockchain, cybersecurity, secure AI, and software engineering',
   tagline:
     'Research on trustworthy decentralized systems, cyber-physical security, federated learning, and requirements engineering.',
