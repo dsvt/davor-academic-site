@@ -1,48 +1,21 @@
 ---
 import Layout from '@components/Layout.astro';
-import ProfileLinks from '@components/ProfileLinks.astro';
 import PublicationList from '@components/PublicationList.astro';
+import { profile } from '@data/profile';
 import { publicationsByYear } from '@data/publications';
-
-const recent = publicationsByYear.filter((pub) => pub.status === 'recent');
-const selected = publicationsByYear.filter((pub) => pub.status === 'selected');
-const legacy = publicationsByYear.filter((pub) => pub.status === 'legacy');
 ---
-<Layout title="Publications" description="Selected and recent publications by Davor Svetinovic.">
+<Layout title="Publications" description="Selected publications by Davor Svetinovic.">
   <section class="section page-title">
     <p class="eyebrow">Publications</p>
-    <h1>Publications</h1>
+    <h1>Selected publications</h1>
     <p class="lead">
-      A curated list drawn from the current site and public publication indexes. For the full
-      record, use the external profiles.
+      A short selected list. For the full publication record, use Google Scholar.
     </p>
-    <ProfileLinks />
-  </section>
-
-  <section class="section">
-    <h2>Recent public records to review</h2>
-    <p class="section-note">
-      These entries are visible through DBLP or arXiv and should be checked against the latest
-      public CV before they become the selected list.
-    </p>
-    <PublicationList publications={recent} />
+    <p><a href={profile.scholarUrl} target="_blank" rel="noopener noreferrer">View all publications on Google Scholar</a></p>
   </section>
 
   <section class="section">
     <h2>Selected publications</h2>
-    <p class="section-note">
-      A compact set of representative publications across blockchain, trustworthy AI, federated
-      learning, and software engineering.
-    </p>
-    <PublicationList publications={selected} />
-  </section>
-
-  <section class="section">
-    <h2>Legacy selected publications from the current site</h2>
-    <p class="section-note">
-      Older entries retained from the live site during migration. They preserve continuity without
-      claiming to reproduce the full older bibliography.
-    </p>
-    <PublicationList publications={legacy} />
+    <PublicationList publications={publicationsByYear} />
   </section>
 </Layout>

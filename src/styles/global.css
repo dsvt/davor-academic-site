@@ -121,6 +121,19 @@ a:hover {
   align-items: center;
 }
 
+.hero-photo {
+  margin: 0;
+}
+
+.hero-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
 .hero h1,
 .page-title h1 {
   font-size: 5.25rem;
@@ -199,6 +212,13 @@ a:hover {
   justify-content: space-between;
   gap: 1rem;
   margin-bottom: 1rem;
+}
+
+.link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  justify-content: flex-end;
 }
 
 .profile-links {
@@ -296,6 +316,7 @@ a:hover {
   }
 
   .hero-card,
+  .hero-photo,
   .content-card,
   .note-card,
   .mini-card {
