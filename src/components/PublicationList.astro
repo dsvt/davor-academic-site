@@ -6,13 +6,6 @@ type Props = {
 };
 
 const { publications } = Astro.props;
-
-const statusLabels: Record<string, string> = {
-  recent: 'Recent to review',
-  selected: 'Selected',
-  legacy: 'Legacy selection',
-  review: 'Needs review'
-};
 ---
 <ol class="publication-list">
   {publications.map((pub) => (
@@ -31,7 +24,6 @@ const statusLabels: Record<string, string> = {
           <span>{pub.year}</span>
           <span>{pub.type}</span>
           {pub.sourceLabel && <span>{pub.sourceLabel}</span>}
-          {pub.status && <span>{statusLabels[pub.status] ?? pub.status}</span>}
         </p>
         {pub.note && <p>{pub.note}</p>}
       </article>

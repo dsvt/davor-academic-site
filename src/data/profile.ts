@@ -10,6 +10,10 @@ export type AdvisingTopic = {
   examples: string[];
 };
 
+const talkPhotoUrl =
+  'https://lh3.googleusercontent.com/sitesv/' +
+  'AA5AbUCHMfpC1mAQxypkCysAyHCpEX0gi7AJdwfrLOtlQYAYssd5bgUsGCBjVBbBiPm2fMZWPz_7MNqsQTovqXgICBJW7HVXqrO_t4qMTws_s6dXRbJONtXC_0A2NWxwh5_vcvvdTUQHU-Yrg0kmNKMud5786YgoUsjfOmDp1tXht2cy-xqIefV6_PQq_TPDM6wlTn_JDPYbUSBWthkWQorF31nQAbxZJDxzEgMfYFpBfcE%3Dw1280';
+
 export const researchThemes: ResearchTheme[] = [
   {
     title: 'Blockchain and Web3 systems',
@@ -96,13 +100,14 @@ export const advisingTopics: AdvisingTopic[] = [
   }
 ];
 
-// TODO: VERIFY the exact current academic title and institutional affiliation
-// against the latest public CV before rendering either on the site.
-// TODO: VERIFY whether the Stanford/Elsevier top-scientist statement from the
-// old site should be included. It is intentionally omitted from rendered pages.
 export const profile = {
   name: 'Davor Svetinovic',
   canonicalUrl: 'https://www.davors.com',
+  scholarUrl: 'https://scholar.google.com/citations?user=LpV-B0IAAAAJ',
+  photo: {
+    src: talkPhotoUrl,
+    alt: 'Davor Svetinovic giving a talk'
+  },
   title: 'Computer scientist working on blockchain, cybersecurity, secure AI, and software engineering',
   tagline:
     'Research on trustworthy decentralized systems, cyber-physical security, federated learning, and requirements engineering.',
