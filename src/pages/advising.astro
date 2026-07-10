@@ -1,20 +1,22 @@
 ---
 import Layout from '@components/Layout.astro';
-import { advisingTopics } from '@data/profile';
+import { advisingTopics, leadershipHighlights } from '@data/profile';
 ---
-<Layout title="Advising" description="Advisory, executive training, and collaboration topics.">
+<Layout
+  title="Advising"
+  description="Research collaboration, academic leadership, and invited talks."
+>
   <section class="section page-title">
     <p class="eyebrow">Advising and collaboration</p>
-    <h1>Academic, institutional, and executive engagement</h1>
+    <h1>Research leadership and collaboration</h1>
     <p class="lead">
-      Talks, advisory work, executive education, and research collaboration tied to blockchain,
-      cybersecurity, AI, and trustworthy digital infrastructure.
+      Areas for graduate supervision, joint research, academic program work, and invited talks.
     </p>
   </section>
 
-  <section class="section grid-three">
+  <section class="section topic-grid advising-grid">
     {advisingTopics.map((topic) => (
-      <article class="content-card">
+      <article class="topic-summary">
         <h2>{topic.title}</h2>
         <p>{topic.summary}</p>
         <ul>
@@ -24,12 +26,25 @@ import { advisingTopics } from '@data/profile';
     ))}
   </section>
 
-  <section class="section narrow">
-    <h2>Collaboration fit</h2>
-    <p>
-      Good-fit conversations usually connect to research, institutional risk, education, or public
-      digital infrastructure. It keeps consulting terms, personal contact details, and engagement
-      details off the public page.
-    </p>
+  <section class="section split-section leadership-section">
+    <div>
+      <p class="eyebrow">Leadership</p>
+      <h2>Selected academic roles</h2>
+    </div>
+    <ul class="role-list">
+      {leadershipHighlights.map((item) => (
+        <li>
+          <strong>{item.role}</strong>
+          <span>{item.organization}</span>
+          {item.period && <span class="role-period">{item.period}</span>}
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="section contact-prompt">
+    <h2>Start a conversation</h2>
+    <p>For research, academic, or speaking enquiries, use the public contact route.</p>
+    <a href="/contact">Contact and profiles</a>
   </section>
 </Layout>

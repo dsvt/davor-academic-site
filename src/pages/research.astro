@@ -2,19 +2,31 @@
 import Layout from '@components/Layout.astro';
 import { researchThemes } from '@data/profile';
 ---
-<Layout title="Research" description="Research themes for Davor Svetinovic.">
+<Layout
+  title="Research"
+  description="Research on agentic AI security, decentralized systems, and cyber-physical resilience."
+>
   <section class="section page-title">
     <p class="eyebrow">Research</p>
-    <h1>Research themes</h1>
+    <h1>Agentic AI security and resilient systems</h1>
     <p class="lead">
-      A concise map of public research threads across blockchain systems, cybersecurity,
-      secure AI, and software engineering.
+      The current program connects autonomous-agent security with long-running work on blockchain,
+      cyber-physical systems, and software engineering.
     </p>
   </section>
 
-  <section class="section grid-two">
+  <section class="section current-direction">
+    <h2>Current direction</h2>
+    <p>
+      Autonomous agents increasingly act across model services, smart contracts, digital markets,
+      and physical infrastructure. The research question is direct: how can these systems be
+      audited, constrained, and kept resilient under adversarial conditions?
+    </p>
+  </section>
+
+  <section class="section theme-grid">
     {researchThemes.map((theme) => (
-      <article class="content-card">
+      <article class="theme-block" id={theme.slug}>
         <h2>{theme.title}</h2>
         <p>{theme.summary}</p>
         <ul>

@@ -19,13 +19,13 @@ const { publications } = Astro.props;
           )}
         </h3>
         <p class="authors">{pub.authors}</p>
-        <p class="venue">
+        <p class="publication-meta">
           <span>{pub.venue}</span>
+          <span aria-hidden="true">/</span>
           <span>{pub.year}</span>
+          <span aria-hidden="true">/</span>
           <span>{pub.type}</span>
-          {pub.sourceLabel && <span>{pub.sourceLabel}</span>}
         </p>
-        {pub.note && <p>{pub.note}</p>}
       </article>
     </li>
   ))}

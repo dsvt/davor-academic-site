@@ -1,8 +1,22 @@
 ---
 import { profile } from '@data/profile';
+
+type Props = {
+  primaryOnly?: boolean;
+};
+
+const { primaryOnly = false } = Astro.props;
+const links = primaryOnly ? profile.links.filter((link) => link.primary) : profile.links;
 ---
 <div class="profile-links" aria-label="External profiles">
-  {profile.links.map((link) => (
-    <a href={link.href} rel="me noopener noreferrer" target="_blank">{link.label}</a>
+  {links.map((link) => (
+    <a
+      href={link.href}
+      rel="me noopener noreferrer"
+      target="_blank"
+      aria-label={`${link.label} (opens in a new tab)`}
+    >
+      {link.label}
+    </a>
   ))}
 </div>

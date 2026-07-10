@@ -2,56 +2,95 @@
 import Layout from '@components/Layout.astro';
 import ProfileLinks from '@components/ProfileLinks.astro';
 import PublicationList from '@components/PublicationList.astro';
-import { advisingTopics, profile, researchThemes } from '@data/profile';
+import { leadershipHighlights, profile, researchThemes } from '@data/profile';
 import { publicationsByYear } from '@data/publications';
 
-const featuredPublications = publicationsByYear.slice(0, 4);
+const featuredPublications = publicationsByYear.filter((publication) => publication.featured);
 ---
 <Layout title={profile.name} description={profile.tagline}>
   <section class="hero section">
     <div class="hero-copy">
       <p class="eyebrow">{profile.location}</p>
       <h1>{profile.name}</h1>
-      <p class="lead">{profile.title}</p>
-      <p>{profile.tagline}</p>
-      <ProfileLinks />
+      <p class="lead">{profile.tagline}</p>
+      <p class="role-line">{profile.title}</p>
+      <ProfileLinks primaryOnly />
     </div>
     <figure class="hero-photo">
-      <img src={profile.photo.src} alt={profile.photo.alt} width="932" height="667" />
+      <img
+        src={profile.photo.src}
+        alt={profile.photo.alt}
+        width="932"
+        height="667"
+        fetchpriority="high"
+      />
     </figure>
   </section>
 
-  <section class="section grid-two">
-    <div>
+  <section class="section split-section">
+    <div class="prose-block">
+      <p class="eyebrow">Profile</p>
       <h2>About</h2>
       <p>{profile.shortBio}</p>
       {profile.longBio.map((paragraph) => <p>{paragraph}</p>)}
     </div>
-    <div class="content-card">
-      <h2>Research focus</h2>
-      <ul>
-        {researchThemes.map((theme) => <li>{theme.title}</li>)}
+    <div class="leadership-block">
+      <h2>Selected leadership</h2>
+      <ul class="role-list">
+        {leadershipHighlights.map((item) => (
+          <li>
+            <strong>{item.role}</strong>
+            <span>{item.organization}</span>
+            {item.period && <span class="role-period">{item.period}</span>}
+          </li>
+        ))}
       </ul>
     </div>
   </section>
 
   <section class="section">
     <div class="section-heading">
-      <h2>Selected publications</h2>
+      <div>
+        <p class="eyebrow">Research</p>
+        <h2>Current directions</h2>
+      </div>
+      <a href="/research">Research overview</a>
+    </div>
+    <div class="topic-grid">
+      {researchThemes.map((theme) => (
+        <article class="topic-summary">
+          <h3><a href={`/research#${theme.slug}`}>{theme.title}</a></h3>
+          <p>{theme.summary}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Publications</p>
+        <h2>Selected work</h2>
+      </div>
       <div class="link-row">
-        <a href="/publications">View selected publications</a>
-        <a href={profile.scholarUrl} target="_blank" rel="noopener noreferrer">Google Scholar for full list</a>
+        <a href="/publications">Selected publications</a>
+        <a href={profile.scholarUrl} target="_blank" rel="noopener noreferrer">
+          Full list on Google Scholar
+        </a>
       </div>
     </div>
     <PublicationList publications={featuredPublications} />
   </section>
 
-  <section class="section grid-three">
-    {advisingTopics.map((topic) => (
-      <article class="mini-card">
-        <h2>{topic.title}</h2>
-        <p>{topic.summary}</p>
-      </article>
-    ))}
+  <section class="section collaboration-band">
+    <div>
+      <p class="eyebrow">Collaboration</p>
+      <h2>Research leadership, supervision, and invited talks</h2>
+    </div>
+    <p>
+      Current interests include agentic AI security, decentralized digital economies, and
+      cyber-physical resilience.
+    </p>
+    <a href="/advising">Advising and collaboration</a>
   </section>
 </Layout>

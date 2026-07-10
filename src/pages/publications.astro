@@ -5,17 +5,21 @@ import { profile } from '@data/profile';
 import { publicationsByYear } from '@data/publications';
 ---
 <Layout title="Publications" description="Selected publications by Davor Svetinovic.">
-  <section class="section page-title">
+  <section class="section page-title publications-title">
     <p class="eyebrow">Publications</p>
     <h1>Selected publications</h1>
     <p class="lead">
-      A short selected list. For the full publication record, use Google Scholar.
+      Recent work across AI security, decentralized systems, blockchain privacy, and
+      cyber-physical resilience.
     </p>
-    <p><a href={profile.scholarUrl} target="_blank" rel="noopener noreferrer">View all publications on Google Scholar</a></p>
+    <p>
+      <a href={profile.scholarUrl} target="_blank" rel="noopener noreferrer">
+        View the complete record on Google Scholar
+      </a>
+    </p>
   </section>
 
-  <section class="section">
-    <h2>Selected publications</h2>
+  <section class="section publication-section" aria-label="Selected publication list">
     <PublicationList publications={publicationsByYear} />
   </section>
 </Layout>

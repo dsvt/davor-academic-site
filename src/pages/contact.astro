@@ -1,22 +1,33 @@
 ---
 import Layout from '@components/Layout.astro';
 import ProfileLinks from '@components/ProfileLinks.astro';
+import { profile } from '@data/profile';
+
+const linkedin = profile.links.find((link) => link.label === 'LinkedIn');
 ---
-<Layout title="Contact" description="Contact and external profiles.">
+<Layout title="Contact" description="Contact Davor Svetinovic and view academic profiles.">
   <section class="section page-title">
     <p class="eyebrow">Contact</p>
-    <h1>Contact and profiles</h1>
+    <h1>Contact</h1>
     <p class="lead">
-      Public profile links for publications, professional background, and academic contact.
+      For research collaboration, invited talks, and academic enquiries, LinkedIn is the preferred
+      public contact route.
     </p>
   </section>
 
-  <section class="section content-card">
-    <h2>External profiles</h2>
-    <ProfileLinks />
-    <p>
-      For publication records, start with DBLP, ORCID, or Google Scholar. For professional context
-      and direct outreach, use LinkedIn or another public profile listed here.
-    </p>
+  <section class="section contact-layout">
+    <div class="contact-primary">
+      <h2>Research and academic enquiries</h2>
+      <p>Include a short note about the topic, institution, and expected form of collaboration.</p>
+      {linkedin && (
+        <a class="primary-link" href={linkedin.href} target="_blank" rel="noopener noreferrer">
+          Contact on LinkedIn
+        </a>
+      )}
+    </div>
+    <div class="profiles-block">
+      <h2>Academic profiles</h2>
+      <ProfileLinks />
+    </div>
   </section>
 </Layout>

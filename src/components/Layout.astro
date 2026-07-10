@@ -16,6 +16,20 @@ const {
 const pageTitle = title === profile.name ? profile.name : `${title} | ${profile.name}`;
 const canonicalPath = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
 const canonical = new URL(canonicalPath, profile.canonicalUrl).toString();
+const socialImage = new URL(profile.photo.src, profile.canonicalUrl).toString();
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.name,
+  url: profile.canonicalUrl,
+  image: socialImage,
+  jobTitle: 'Associate Professor of Computer Science and Associate Chair for Graduate Studies',
+  affiliation: [
+    { '@type': 'Organization', name: 'Khalifa University' },
+    { '@type': 'Organization', name: 'ADIA Lab' }
+  ],
+  sameAs: profile.links.map((link) => link.href)
+};
 ---
 <!doctype html>
 <html lang="en">
@@ -30,6 +44,14 @@ const canonical = new URL(canonicalPath, profile.canonicalUrl).toString();
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content={profile.photo.alt} />
+    <meta property="og:site_name" content={profile.name} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(personSchema)} />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to content</a>
@@ -37,7 +59,11 @@ const canonical = new URL(canonicalPath, profile.canonicalUrl).toString();
       <nav class="nav" aria-label="Primary navigation">
         <a class="brand" href="/">{profile.name}</a>
         <div class="nav-links">
-          {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+          {navigation.map((item) => (
+            <a href={item.href} aria-current={canonicalPath === item.href ? 'page' : undefined}>
+              {item.label}
+            </a>
+          ))}
         </div>
       </nav>
     </header>

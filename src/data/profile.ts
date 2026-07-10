@@ -1,4 +1,5 @@
 export type ResearchTheme = {
+  slug: string;
   title: string;
   summary: string;
   topics: string[];
@@ -10,89 +11,110 @@ export type AdvisingTopic = {
   examples: string[];
 };
 
+export type LeadershipHighlight = {
+  role: string;
+  organization: string;
+  period?: string;
+};
+
 export const researchThemes: ResearchTheme[] = [
   {
-    title: 'Blockchain and Web3 systems',
+    slug: 'agentic-ai-security',
+    title: 'Agentic AI security and resilience',
     summary:
-      'Research on programmable blockchains, privacy, decentralized finance, blockchain oracles, censorship, and protocol design. The public record includes work on stealth addresses, Ethereum-based federated learning, blockchain censorship, decentralized energy trading, and trust in cryptocurrency systems.',
+      'Current work examines how autonomous agents and multi-agent systems can be audited, secured, and made resilient when they interact with smart contracts, digital markets, and critical infrastructure.',
     topics: [
-      'Privacy and identity in programmable blockchains',
-      'Blockchain oracles, censorship, and trust assumptions',
-      'Decentralized finance and energy trading'
+      'Agent verification and security auditing',
+      'Adversarial and cooperative multi-agent learning',
+      'Decentralized AI and secure agent infrastructure',
+      'Security requirements for autonomous systems'
     ]
   },
   {
-    title: 'Cybersecurity for cyber-physical systems',
+    slug: 'blockchain-security',
+    title: 'Blockchain security and digital economies',
     summary:
-      'Work on security requirements, threat modeling, and attack detection for systems where software connects to physical infrastructure. Public publications cover smart grids, microgrids, IoT systems, decentralized energy markets, and cyber-physical security for industrial settings.',
+      'Research on privacy, censorship resistance, maximal extractable value, decentralized finance, and protocol security in programmable blockchains.',
     topics: [
-      'Smart-grid and microgrid security',
-      'Threat models for cyber-physical infrastructure',
-      'IoT privacy and security requirements'
+      'Blockchain privacy and stealth addresses',
+      'Censorship resistance and protocol trust',
+      'DeFi security, MEV detection, and market behavior'
     ]
   },
   {
-    title: 'Secure AI and federated learning',
+    slug: 'cyber-physical-security',
+    title: 'Cyber-physical and infrastructure security',
     summary:
-      'Recent work studies decentralized and privacy-preserving federated learning, including blockchain-supported learning systems, poisoning resistance, cross-device trust, and links between blockchain infrastructure and trustworthy AI.',
+      'Security for smart grids, microgrids, connected vehicles, and other systems where software and AI act on physical infrastructure.',
     topics: [
-      'Decentralized federated learning',
-      'Data-poisoning defenses and client trust',
-      'Blockchain support for explainable and trustworthy AI'
+      'Cyber-resilient power-system protection',
+      'Attack detection for smart grids and industrial systems',
+      'Threat modeling for connected and IoT systems',
+      'Secure decentralized energy systems'
     ]
   },
   {
+    slug: 'software-engineering',
     title: 'Software and requirements engineering',
     summary:
-      'Earlier and continuing work focuses on requirements engineering, software architecture, goal modeling, security requirements, and architecture recovery. This thread connects older work on use-case statecharts and domain analysis with newer requirements questions in Web3 systems.',
+      'Requirements and systems engineering provide the methods used to study trust, security, and failure in complex digital systems.',
     topics: [
-      'Requirements engineering for complex systems',
-      'Security requirements analysis',
+      'Security and privacy requirements',
+      'Requirements engineering for decentralized systems',
       'Software architecture and architecture recovery'
-    ]
-  },
-  {
-    title: 'Digital governance and trustworthy infrastructure',
-    summary:
-      'Public-facing advisory topics stay close to the research record: blockchain governance, public-sector transparency, infrastructure security, and executive education around AI, blockchain, cybersecurity, and digital systems.',
-    topics: [
-      'Blockchain governance and transparency',
-      'Digital infrastructure risk',
-      'Executive education for emerging technology'
     ]
   }
 ];
 
 export const advisingTopics: AdvisingTopic[] = [
   {
-    title: 'Blockchain governance and transparency',
+    title: 'Research collaboration and graduate supervision',
     summary:
-      'Advising on how blockchain systems can support auditability, accountability, and institutional trust without ignoring privacy, governance, or implementation limits.',
+      'Current collaboration interests center on agentic AI security, decentralized AI, blockchain protocols, and cyber-physical security.',
     examples: [
-      'Public-sector blockchain use cases',
-      'Governance models for decentralized systems',
-      'Risk review for Web3 and digital-asset initiatives'
+      'Agent auditing and multi-agent security',
+      'Decentralized AI and blockchain systems',
+      'Security for critical digital infrastructure',
+      'Research methods for trustworthy systems'
     ]
   },
   {
-    title: 'Cybersecurity for infrastructure and public systems',
+    title: 'Academic and research leadership',
     summary:
-      'Security guidance rooted in research on smart grids, IoT, cyber-physical systems, and software requirements, with attention to threat models and operational constraints.',
+      'Experience includes graduate program leadership, research institute direction, and interdisciplinary research programs.',
     examples: [
-      'Security requirements and threat modeling',
-      'Smart-grid and IoT risk review',
-      'Cybersecurity briefings for technical and executive teams'
+      'Graduate program and curriculum development',
+      'Research group and institute development',
+      'Interdisciplinary research planning'
     ]
   },
   {
-    title: 'Executive training on AI, blockchain, and cybersecurity',
+    title: 'Invited talks and expert briefings',
     summary:
-      'Briefings and short courses for leaders who need clear technical grounding before making policy, investment, or governance decisions.',
+      'Talks connect current research in AI security and decentralized systems to decisions in academia, industry, and public institutions.',
     examples: [
-      'AI and blockchain foundations',
-      'Cybersecurity and digital-governance workshops',
-      'Research translation for senior decision-makers'
+      'Agentic AI security and resilient digital economies',
+      'Blockchain privacy, censorship, and protocol risk',
+      'Cybersecurity for infrastructure and public systems',
+      'Trustworthy AI and federated learning'
     ]
+  }
+];
+
+export const leadershipHighlights: LeadershipHighlight[] = [
+  {
+    role: 'Associate Chair for Graduate Studies',
+    organization: 'Khalifa University',
+    period: '2025-present'
+  },
+  {
+    role: 'Head and Director, Research Institute for Cryptoeconomics',
+    organization: 'WU Vienna',
+    period: '2021-2024'
+  },
+  {
+    role: 'Theme Lead, Cyber-Physical Systems and Blockchain Technology',
+    organization: 'Khalifa University'
   }
 ];
 
@@ -102,44 +124,50 @@ export const profile = {
   scholarUrl: 'https://scholar.google.com/citations?user=LpV-B0IAAAAJ',
   photo: {
     src: '/davor-talk.jpg',
-    alt: 'Davor Svetinovic giving a talk'
+    alt: 'Davor Svetinovic speaking at a lectern'
   },
-  title: 'Computer scientist working on blockchain, cybersecurity, secure AI, and software engineering',
+  title:
+    'Associate Professor of Computer Science at Khalifa University and Visiting Fellow at ADIA Lab',
   tagline:
-    'Research on trustworthy decentralized systems, cyber-physical security, federated learning, and requirements engineering.',
-  location: 'United Arab Emirates',
+    'Research on agentic AI security, decentralized systems, blockchain privacy and censorship resistance, and cyber-physical resilience.',
+  location: 'Abu Dhabi, United Arab Emirates',
   shortBio:
-    'Davor Svetinovic is a UAE-based computer scientist whose work sits at the intersection of blockchain systems, cybersecurity, federated learning, and software engineering.',
+    'Davor Svetinovic is an Associate Professor of Computer Science and Associate Chair for Graduate Studies at Khalifa University. He is also a Visiting Fellow at ADIA Lab.',
   longBio: [
-    'His public research record includes secure decentralized energy trading, smart-grid and IoT security, blockchain oracles, trustworthy AI, and requirements engineering for complex systems.',
-    'This site is a concise academic profile and curated publication hub. For a complete publication index, use the linked DBLP, ORCID, and Google Scholar profiles.'
+    'His current research asks how autonomous agents, multi-agent learning systems, smart contracts, and cyber-physical infrastructure can be made secure, auditable, and resilient.',
+    'He previously served as a Full Professor and Director of the Research Institute for Cryptoeconomics at WU Vienna, and held visiting and affiliated research roles at MIT. He holds a PhD in Computer Science from the University of Waterloo.'
   ],
   researchAreas: researchThemes.map((theme) => theme.title),
-  services: advisingTopics.map((topic) => topic.title),
   links: [
     {
-      label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/davor-svetinovic/'
-    },
-    {
-      label: 'X',
-      href: 'https://x.com/dsvetino'
-    },
-    {
       label: 'Google Scholar',
-      href: 'https://scholar.google.com/citations?user=LpV-B0IAAAAJ'
+      href: 'https://scholar.google.com/citations?user=LpV-B0IAAAAJ',
+      primary: true
     },
     {
-      label: 'DBLP',
-      href: 'https://dblp.org/pid/68/6669.html'
+      label: 'LinkedIn',
+      href: 'https://www.linkedin.com/in/davor-svetinovic/',
+      primary: true
     },
     {
       label: 'ORCID',
-      href: 'https://orcid.org/0000-0002-3020-9556'
+      href: 'https://orcid.org/0000-0002-3020-9556',
+      primary: true
+    },
+    {
+      label: 'DBLP',
+      href: 'https://dblp.org/pid/68/6669.html',
+      primary: false
     },
     {
       label: 'ResearchGate',
-      href: 'https://www.researchgate.net/profile/Davor-Svetinovic'
+      href: 'https://www.researchgate.net/profile/Davor-Svetinovic',
+      primary: false
+    },
+    {
+      label: 'X',
+      href: 'https://x.com/dsvetino',
+      primary: false
     }
   ]
 };

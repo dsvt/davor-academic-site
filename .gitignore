@@ -8,14 +8,5 @@ dist/
 .env.*
 src/data/generated/*.bib
 
-# Local/generated files
-node_modules/
-dist/
-.astro/
-.vercel/
-.env
-.env.local
-.DS_Store
-
 # Private source materials
 source-materials/private/
