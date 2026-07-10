@@ -3,10 +3,15 @@ import { profile } from '@data/profile';
 
 type Props = {
   primaryOnly?: boolean;
+  academicOnly?: boolean;
 };
 
-const { primaryOnly = false } = Astro.props;
-const links = primaryOnly ? profile.links.filter((link) => link.primary) : profile.links;
+const { primaryOnly = false, academicOnly = false } = Astro.props;
+const links = profile.links.filter((link) => {
+  if (primaryOnly) return link.primary;
+  if (academicOnly) return link.label !== 'LinkedIn' && link.label !== 'X';
+  return true;
+});
 ---
 <div class="profile-links" aria-label="External profiles">
   {links.map((link) => (

@@ -127,12 +127,12 @@ export const profile = {
     alt: 'Davor Svetinovic speaking at a lectern'
   },
   title:
-    'Associate Professor of Computer Science at Khalifa University and Visiting Fellow at ADIA Lab',
+    'Computer science professor at Khalifa University and Visiting Fellow at ADIA Lab',
   tagline:
     'Research on agentic AI security, decentralized systems, blockchain privacy and censorship resistance, and cyber-physical resilience.',
   location: 'Abu Dhabi, United Arab Emirates',
   shortBio:
-    'Davor Svetinovic is an Associate Professor of Computer Science and Associate Chair for Graduate Studies at Khalifa University. He is also a Visiting Fellow at ADIA Lab.',
+    'Davor Svetinovic is a computer science professor and Associate Chair for Graduate Studies at Khalifa University. He is also a Visiting Fellow at ADIA Lab.',
   longBio: [
     'His current research asks how autonomous agents, multi-agent learning systems, smart contracts, and cyber-physical infrastructure can be made secure, auditable, and resilient.',
     'He previously served as a Full Professor and Director of the Research Institute for Cryptoeconomics at WU Vienna, and held visiting and affiliated research roles at MIT. He holds a PhD in Computer Science from the University of Waterloo.'
