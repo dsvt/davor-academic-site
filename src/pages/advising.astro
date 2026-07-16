@@ -1,35 +1,39 @@
 ---
 import Layout from '@components/Layout.astro';
-import { advisingTopics, leadershipHighlights } from '@data/profile';
+import { collaborationRoutes, leadershipHighlights } from '@data/profile';
 ---
 <Layout
   title="Advising"
   description="Research collaboration, academic leadership, and invited talks."
 >
   <section class="section page-title">
-    <p class="eyebrow">Advising and collaboration</p>
     <h1>Research leadership and collaboration</h1>
     <p class="lead">
-      Areas for graduate supervision, joint research, academic program work, and invited talks.
+      Three routes for research participation, collective-level collaboration, and direct
+      academic enquiries.
     </p>
   </section>
 
-  <section class="section topic-grid advising-grid">
-    {advisingTopics.map((topic) => (
-      <article class="topic-summary">
-        <h2>{topic.title}</h2>
-        <p>{topic.summary}</p>
-        <ul>
-          {topic.examples.map((example) => <li>{example}</li>)}
-        </ul>
+  <section class="section collaboration-routes" aria-label="Collaboration routes">
+    {collaborationRoutes.map((route) => (
+      <article>
+        <h2>{route.title}</h2>
+        <p>{route.summary}</p>
+        <a
+          href={route.href}
+          target={route.external ? '_blank' : undefined}
+          rel={route.external ? 'noopener noreferrer' : undefined}
+        >
+          {route.linkLabel}
+        </a>
       </article>
     ))}
   </section>
 
   <section class="section split-section leadership-section">
     <div>
-      <p class="eyebrow">Leadership</p>
       <h2>Selected academic roles</h2>
+      <p>Graduate programme, institute, and interdisciplinary research leadership.</p>
     </div>
     <ul class="role-list">
       {leadershipHighlights.map((item) => (
@@ -40,11 +44,5 @@ import { advisingTopics, leadershipHighlights } from '@data/profile';
         </li>
       ))}
     </ul>
-  </section>
-
-  <section class="section contact-prompt">
-    <h2>Start a conversation</h2>
-    <p>For research, academic, or speaking enquiries, use the public contact route.</p>
-    <a href="/contact">Contact and profiles</a>
   </section>
 </Layout>

@@ -2,20 +2,21 @@
 import Layout from '@components/Layout.astro';
 import ProfileLinks from '@components/ProfileLinks.astro';
 import PublicationList from '@components/PublicationList.astro';
-import { leadershipHighlights, profile, researchThemes } from '@data/profile';
+import {
+  leadershipHighlights,
+  profile,
+  researchInitiatives,
+  researchThemes
+} from '@data/profile';
 import { publicationsByYear } from '@data/publications';
 
 const featuredPublications = publicationsByYear.filter((publication) => publication.featured);
+const currentTheme = researchThemes[0];
+const supportingThemes = researchThemes.slice(1);
+const trustLab = researchInitiatives.find((initiative) => initiative.shortName === 'Trust Lab');
 ---
 <Layout title={profile.name} description={profile.tagline}>
-  <section class="hero section">
-    <div class="hero-copy">
-      <p class="eyebrow">{profile.location}</p>
-      <h1>{profile.name}</h1>
-      <p class="lead">{profile.tagline}</p>
-      <p class="role-line">{profile.title}</p>
-      <ProfileLinks primaryOnly />
-    </div>
+  <section class="hero section" aria-labelledby="hero-title">
     <figure class="hero-photo">
       <img
         src={profile.photo.src}
@@ -25,11 +26,18 @@ const featuredPublications = publicationsByYear.filter((publication) => publicat
         fetchpriority="high"
       />
     </figure>
+    <div class="hero-copy">
+      <h1 id="hero-title">{profile.name}</h1>
+      <p class="hero-statement">{profile.tagline}</p>
+      <div class="hero-record">
+        <p>{profile.title}<br />{profile.location}</p>
+        <ProfileLinks primaryOnly />
+      </div>
+    </div>
   </section>
 
-  <section class="section split-section">
+  <section class="section split-section profile-section">
     <div class="prose-block">
-      <p class="eyebrow">Profile</p>
       <h2>About</h2>
       <p>{profile.shortBio}</p>
       {profile.longBio.map((paragraph) => <p>{paragraph}</p>)}
@@ -48,17 +56,46 @@ const featuredPublications = publicationsByYear.filter((publication) => publicat
     </div>
   </section>
 
-  <section class="section">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">Research</p>
-        <h2>Current directions</h2>
-      </div>
-      <a href="/research">Research overview</a>
+  <section class="section initiatives-section">
+    <div class="initiatives-intro">
+      <h2>Current research initiatives</h2>
+      <p>
+        REQS Labs provides the collective structure. Trust Lab carries the active programme,
+        people, methods, and public research record.
+      </p>
     </div>
-    <div class="topic-grid">
-      {researchThemes.map((theme) => (
-        <article class="topic-summary">
+    <div class="initiative-ledger">
+      {researchInitiatives.map((initiative) => (
+        <article>
+          <p class="initiative-role">{initiative.role}</p>
+          <h3>{initiative.name}</h3>
+          <p>{initiative.summary}</p>
+          <a href={initiative.href} target="_blank" rel="noopener noreferrer">
+            Visit {initiative.shortName}
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section research-index">
+    <article class="research-feature" id={currentTheme.slug}>
+      <p class="research-context">Current programme</p>
+      <h2>{currentTheme.title}</h2>
+      <p>{currentTheme.summary}</p>
+      <div class="link-row research-links">
+        <a href={`/research#${currentTheme.slug}`}>Research overview</a>
+        {trustLab && (
+          <a href={`${trustLab.href}/research`} target="_blank" rel="noopener noreferrer">
+            Programme at Trust Lab
+          </a>
+        )}
+      </div>
+    </article>
+    <div class="research-foundations">
+      <h2>Research foundations</h2>
+      {supportingThemes.map((theme) => (
+        <article>
           <h3><a href={`/research#${theme.slug}`}>{theme.title}</a></h3>
           <p>{theme.summary}</p>
         </article>
@@ -66,12 +103,9 @@ const featuredPublications = publicationsByYear.filter((publication) => publicat
     </div>
   </section>
 
-  <section class="section">
+  <section class="section publications-home">
     <div class="section-heading">
-      <div>
-        <p class="eyebrow">Publications</p>
-        <h2>Selected work</h2>
-      </div>
+      <h2>Selected work</h2>
       <div class="link-row">
         <a href="/publications">Selected publications</a>
         <a href={profile.scholarUrl} target="_blank" rel="noopener noreferrer">
@@ -80,17 +114,5 @@ const featuredPublications = publicationsByYear.filter((publication) => publicat
       </div>
     </div>
     <PublicationList publications={featuredPublications} />
-  </section>
-
-  <section class="section collaboration-band">
-    <div>
-      <p class="eyebrow">Collaboration</p>
-      <h2>Research leadership, supervision, and invited talks</h2>
-    </div>
-    <p>
-      Current interests include agentic AI security, decentralized digital economies, and
-      cyber-physical resilience.
-    </p>
-    <a href="/advising">Advising and collaboration</a>
   </section>
 </Layout>

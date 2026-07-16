@@ -6,11 +6,10 @@ import { publicationsByYear } from '@data/publications';
 ---
 <Layout title="Publications" description="Selected publications by Davor Svetinovic.">
   <section class="section page-title publications-title">
-    <p class="eyebrow">Publications</p>
     <h1>Selected publications</h1>
     <p class="lead">
-      Recent work across AI security, decentralized systems, blockchain privacy, and
-      cyber-physical resilience.
+      A concise cross-section of current work and earlier foundations in AI security,
+      decentralized systems, cyber-physical resilience, and requirements engineering.
     </p>
     <p>
       <a href={profile.scholarUrl} target="_blank" rel="noopener noreferrer">
@@ -20,6 +19,6 @@ import { publicationsByYear } from '@data/publications';
   </section>
 
   <section class="section publication-section" aria-label="Selected publication list">
-    <PublicationList publications={publicationsByYear} />
+    <PublicationList publications={publicationsByYear} headingLevel={2} />
   </section>
 </Layout>

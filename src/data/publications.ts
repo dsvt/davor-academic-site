@@ -39,12 +39,12 @@ export const publications: Publication[] = [
     url: 'https://doi.org/10.1016/j.iotcps.2026.03.006'
   },
   {
-    title: 'Maximal Extractable Value in Decentralized Finance: Taxonomy, Detection, and Mitigation',
-    authors: 'Huned Materwala, Shraddha M. Naik, Aya Taha, Tala Abdulrahman Abed, Davor Svetinovic',
-    venue: 'IEEE Transactions on Services Computing',
-    year: 2025,
+    title: 'Goal-Oriented Requirements Engineering for Research-Intensive Complex Systems: A Case Study',
+    authors: 'Selamawit Woldeamlak, Ali Diabat, Davor Svetinovic',
+    venue: 'Systems Engineering',
+    year: 2016,
     type: 'Journal',
-    url: 'https://doi.org/10.1109/TSC.2025.3620604'
+    url: 'https://doi.org/10.1002/sys.21355'
   },
   {
     title: 'On the Security and Privacy Implications of Large Language Models: In-Depth Threat Analysis',
@@ -62,8 +62,7 @@ export const publications: Publication[] = [
     venue: 'The ACM Web Conference',
     year: 2024,
     type: 'Conference',
-    url: 'https://doi.org/10.1145/3589334.3645431',
-    featured: true
+    url: 'https://doi.org/10.1145/3589334.3645431'
   },
   {
     title: 'BaseSAP: Modular Stealth Address Protocol for Programmable Blockchains',
@@ -74,12 +73,13 @@ export const publications: Publication[] = [
     url: 'https://doi.org/10.1109/TIFS.2024.3364081'
   },
   {
-    title: 'Cyber-Immune Line Current Differential Relays',
-    authors: 'Ahmad Mohammad Saber, Amr Youssef, Davor Svetinovic, Hatem Zeineldin, Ehab F. El-Saadany',
-    venue: 'IEEE Transactions on Industrial Informatics',
-    year: 2024,
+    title: 'Unified Use Case Statecharts: Case Studies',
+    authors: 'Davor Svetinovic, Daniel M. Berry, Nancy A. Day, Michael W. Godfrey',
+    venue: 'Requirements Engineering',
+    year: 2007,
     type: 'Journal',
-    url: 'https://doi.org/10.1109/TII.2023.3310769'
+    url: 'https://doi.org/10.1007/s00766-007-0053-1',
+    featured: true
   }
 ];
 

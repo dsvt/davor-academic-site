@@ -1,6 +1,6 @@
 ---
 import { navigation } from '@data/navigation';
-import { profile } from '@data/profile';
+import { profile, researchInitiatives } from '@data/profile';
 import '@styles/global.css';
 
 type Props = {
@@ -28,7 +28,12 @@ const personSchema = {
     { '@type': 'Organization', name: 'Khalifa University' },
     { '@type': 'Organization', name: 'ADIA Lab' }
   ],
-  sameAs: profile.links.map((link) => link.href)
+  sameAs: profile.links.map((link) => link.href),
+  memberOf: researchInitiatives.map((initiative) => ({
+    '@type': 'ResearchProject',
+    name: initiative.name,
+    url: initiative.href
+  }))
 };
 ---
 <!doctype html>
@@ -67,13 +72,20 @@ const personSchema = {
         </div>
       </nav>
     </header>
-    <main id="main">
+    <main id="main" tabindex="-1">
       <slot />
     </main>
     <footer class="site-footer">
-      <p>
-        © {new Date().getFullYear()} {profile.name}.
-      </p>
+      <div class="footer-inner">
+        <p>© {new Date().getFullYear()} {profile.name}.</p>
+        <nav aria-label="Research initiatives">
+          {researchInitiatives.map((initiative) => (
+            <a href={initiative.href} target="_blank" rel="noopener noreferrer">
+              {initiative.shortName}
+            </a>
+          ))}
+        </nav>
+      </div>
     </footer>
   </body>
 </html>

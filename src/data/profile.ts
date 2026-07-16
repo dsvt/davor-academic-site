@@ -5,10 +5,20 @@ export type ResearchTheme = {
   topics: string[];
 };
 
-export type AdvisingTopic = {
+export type CollaborationRoute = {
   title: string;
   summary: string;
-  examples: string[];
+  href: string;
+  linkLabel: string;
+  external?: boolean;
+};
+
+export type ResearchInitiative = {
+  name: string;
+  shortName: string;
+  role: string;
+  summary: string;
+  href: string;
 };
 
 export type LeadershipHighlight = {
@@ -66,38 +76,48 @@ export const researchThemes: ResearchTheme[] = [
   }
 ];
 
-export const advisingTopics: AdvisingTopic[] = [
+export const researchInitiatives: ResearchInitiative[] = [
   {
-    title: 'Research collaboration and graduate supervision',
+    name: 'REQS Labs',
+    shortName: 'REQS Labs',
+    role: 'Initiator',
     summary:
-      'Current collaboration interests center on agentic AI security, decentralized AI, blockchain protocols, and cyber-physical security.',
-    examples: [
-      'Agent auditing and multi-agent security',
-      'Decentralized AI and blockchain systems',
-      'Security for critical digital infrastructure',
-      'Research methods for trustworthy systems'
-    ]
+      'A virtual research collective pairing rigorous inquiry with agent-enabled prototyping and a stronger path to technology transfer.',
+    href: 'https://www.reqs.org'
   },
   {
-    title: 'Academic and research leadership',
+    name: 'Trusted Agentic Systems Lab',
+    shortName: 'Trust Lab',
+    role: 'Lab lead',
     summary:
-      'Experience includes graduate program leadership, research institute direction, and interdisciplinary research programs.',
-    examples: [
-      'Graduate program and curriculum development',
-      'Research group and institute development',
-      'Interdisciplinary research planning'
-    ]
+      'A REQS member lab studying the security and resilience of autonomous agents, digital markets, and cyber-physical infrastructure.',
+    href: 'https://trust.reqs.org'
+  }
+];
+
+export const collaborationRoutes: CollaborationRoute[] = [
+  {
+    title: 'Join the current research programme',
+    summary:
+      'Trust Lab is the route for research participation in agent assurance, decentralized systems, and cyber-physical resilience.',
+    href: 'https://trust.reqs.org/about',
+    linkLabel: 'How Trust Lab works',
+    external: true
   },
   {
-    title: 'Invited talks and expert briefings',
+    title: 'Build through the research collective',
     summary:
-      'Talks connect current research in AI security and decentralized systems to decisions in academia, industry, and public institutions.',
-    examples: [
-      'Agentic AI security and resilient digital economies',
-      'Blockchain privacy, censorship, and protocol risk',
-      'Cybersecurity for infrastructure and public systems',
-      'Trustworthy AI and federated learning'
-    ]
+      'REQS Labs is the route for prospective member labs and collective-level research or technology-translation collaboration.',
+    href: 'https://www.reqs.org/collaborate',
+    linkLabel: 'Collaboration at REQS Labs',
+    external: true
+  },
+  {
+    title: 'Talks and institutional enquiries',
+    summary:
+      'Use the personal contact page for invited talks, academic leadership, graduate programmes, and institutional work.',
+    href: '/contact',
+    linkLabel: 'Contact Davor'
   }
 ];
 
@@ -129,12 +149,13 @@ export const profile = {
   title:
     'Computer science professor at Khalifa University and Visiting Fellow at ADIA Lab',
   tagline:
-    'Research on agentic AI security, decentralized systems, blockchain privacy and censorship resistance, and cyber-physical resilience.',
+    'Agentic AI security, resilient autonomous systems, and the digital infrastructure they increasingly control.',
   location: 'Abu Dhabi, United Arab Emirates',
   shortBio:
     'Davor Svetinovic is a computer science professor and Associate Chair for Graduate Studies at Khalifa University. He is also a Visiting Fellow at ADIA Lab.',
   longBio: [
     'His current research asks how autonomous agents, multi-agent learning systems, smart contracts, and cyber-physical infrastructure can be made secure, auditable, and resilient.',
+    'He initiated REQS Labs and leads its first member lab, the Trusted Agentic Systems Lab.',
     'He previously served as a Full Professor and Director of the Research Institute for Cryptoeconomics at WU Vienna, and held visiting and affiliated research roles at MIT. He holds a PhD in Computer Science from the University of Waterloo.'
   ],
   researchAreas: researchThemes.map((theme) => theme.title),

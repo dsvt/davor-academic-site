@@ -13,15 +13,19 @@ const links = profile.links.filter((link) => {
   return true;
 });
 ---
-<div class="profile-links" aria-label="External profiles">
-  {links.map((link) => (
-    <a
-      href={link.href}
-      rel="me noopener noreferrer"
-      target="_blank"
-      aria-label={`${link.label} (opens in a new tab)`}
-    >
-      {link.label}
-    </a>
-  ))}
-</div>
+<nav class="profile-links" aria-label="External profiles">
+  <ul>
+    {links.map((link) => (
+      <li>
+        <a
+          href={link.href}
+          rel="me noopener noreferrer"
+          target="_blank"
+          aria-label={`${link.label} (opens in a new tab)`}
+        >
+          {link.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

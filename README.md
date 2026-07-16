@@ -13,7 +13,7 @@ pnpm preview
 
 ## Content
 
-- Profile, links, research themes, advisory topics, and homepage photo live in `src/data/profile.ts`.
+- Profile, links, research themes, initiatives, collaboration routes, and homepage photo live in `src/data/profile.ts`.
 - Selected publications live in `src/data/publications.ts`.
 - The full publication record is linked through Google Scholar rather than duplicated here.
 
