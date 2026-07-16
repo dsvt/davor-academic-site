@@ -39,14 +39,6 @@ export const publications: Publication[] = [
     url: 'https://doi.org/10.1016/j.iotcps.2026.03.006'
   },
   {
-    title: 'Goal-Oriented Requirements Engineering for Research-Intensive Complex Systems: A Case Study',
-    authors: 'Selamawit Woldeamlak, Ali Diabat, Davor Svetinovic',
-    venue: 'Systems Engineering',
-    year: 2016,
-    type: 'Journal',
-    url: 'https://doi.org/10.1002/sys.21355'
-  },
-  {
     title: 'On the Security and Privacy Implications of Large Language Models: In-Depth Threat Analysis',
     authors: 'Luis Ruhländer, Emilian Popp, Maria Stylidou, Sajjad Khan, Davor Svetinovic',
     venue: 'IEEE Cybermatics 2024',
@@ -71,15 +63,6 @@ export const publications: Publication[] = [
     year: 2024,
     type: 'Journal',
     url: 'https://doi.org/10.1109/TIFS.2024.3364081'
-  },
-  {
-    title: 'Unified Use Case Statecharts: Case Studies',
-    authors: 'Davor Svetinovic, Daniel M. Berry, Nancy A. Day, Michael W. Godfrey',
-    venue: 'Requirements Engineering',
-    year: 2007,
-    type: 'Journal',
-    url: 'https://doi.org/10.1007/s00766-007-0053-1',
-    featured: true
   }
 ];
 
