@@ -3,7 +3,7 @@
   --surface: #fffefd;
   --ink: #111a2d;
   --text: #1d2734;
-  --muted: #5d6670;
+  --muted: #4a535d;
   --line: #d5d1ca;
   --accent: #8d2332;
   --accent-dark: #641421;
@@ -24,9 +24,17 @@ html {
 }
 
 body {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
   margin: 0;
-  font-size: 1.04rem;
+  font-size: 1.0625rem;
   line-height: 1.68;
+}
+
+body > main {
+  flex: 1 0 auto;
 }
 
 h1,
@@ -161,6 +169,12 @@ main:focus {
   padding-bottom: 4.5rem;
 }
 
+.hero,
+.initiatives-section,
+.programme-section {
+  width: min(100% - 3rem, var(--max-width) - 3rem);
+}
+
 .hero {
   position: relative;
   isolation: isolate;
@@ -232,8 +246,8 @@ main:focus {
 
 .hero-record > p {
   margin-bottom: 0;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.94rem;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1rem;
 }
 
 .profile-links ul {
@@ -246,7 +260,7 @@ main:focus {
 }
 
 .profile-links a {
-  font-size: 0.94rem;
+  font-size: 1rem;
   font-weight: 750;
 }
 
@@ -350,7 +364,7 @@ main:focus {
 
 .role-list span {
   color: var(--muted);
-  font-size: 0.93rem;
+  font-size: 0.97rem;
 }
 
 .role-period {
@@ -368,13 +382,13 @@ main:focus {
 
 .initiatives-intro h2 {
   max-width: 420px;
-  font-size: clamp(2.5rem, 4.6vw, 3.5rem);
+  font-size: clamp(2.2rem, 3.6vw, 2.85rem);
 }
 
 .initiatives-intro p {
   max-width: 430px;
   margin-bottom: 0;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.84);
 }
 
 .initiative-ledger article {
@@ -393,7 +407,7 @@ main:focus {
 
 .initiative-ledger p:not(.initiative-role) {
   max-width: 620px;
-  color: rgba(255, 255, 255, 0.76);
+  color: rgba(255, 255, 255, 0.86);
 }
 
 .initiative-ledger a {
@@ -419,7 +433,7 @@ main:focus {
 .research-feature h2 {
   max-width: 640px;
   color: var(--ink);
-  font-size: clamp(2.7rem, 5vw, 3.8rem);
+  font-size: clamp(2.4rem, 4vw, 3.1rem);
 }
 
 .research-feature > p:not(.research-context) {
@@ -427,7 +441,7 @@ main:focus {
   font-size: 1.13rem;
 }
 
-.research-links {
+.link-row.research-links {
   justify-content: flex-start;
   margin-top: 1.5rem;
 }
@@ -449,12 +463,19 @@ main:focus {
 
 .research-foundations h3 a {
   color: var(--ink);
+  text-decoration: none;
+}
+
+.research-foundations h3 a:hover,
+.research-foundations h3 a:focus-visible {
+  color: var(--accent-dark);
+  text-decoration: underline;
 }
 
 .research-foundations p {
   margin-bottom: 0;
   color: var(--muted);
-  font-size: 0.94rem;
+  font-size: 1rem;
 }
 
 .section-heading {
@@ -506,17 +527,21 @@ main:focus {
 .publication h2 a,
 .publication h3 a {
   color: var(--ink);
+  text-decoration: none;
 }
 
 .publication h2 a:hover,
-.publication h3 a:hover {
+.publication h3 a:hover,
+.publication h2 a:focus-visible,
+.publication h3 a:focus-visible {
   color: var(--accent-dark);
+  text-decoration: underline;
 }
 
 .authors {
   margin-bottom: 0.35rem;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .publication-meta {
@@ -525,7 +550,7 @@ main:focus {
   gap: 0.35rem;
   margin-bottom: 0;
   color: var(--muted);
-  font-size: 0.89rem;
+  font-size: 0.94rem;
   font-style: italic;
 }
 
@@ -545,12 +570,12 @@ main:focus {
 
 .programme-statement h2 {
   max-width: 670px;
-  font-size: clamp(2.55rem, 4.8vw, 3.65rem);
+  font-size: clamp(2.3rem, 3.8vw, 3rem);
 }
 
 .programme-statement > p:not(.research-context) {
   max-width: 700px;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.86);
   font-size: 1.12rem;
 }
 
@@ -577,7 +602,7 @@ main:focus {
 .programme-topics li {
   padding: 0.85rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.3);
-  color: rgba(255, 255, 255, 0.84);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .foundations-section > header {
@@ -704,7 +729,7 @@ main:focus {
 
 .site-footer {
   background: var(--ink);
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .footer-inner {
@@ -794,6 +819,12 @@ main:focus {
   .section {
     padding-top: 3.25rem;
     padding-bottom: 3.25rem;
+  }
+
+  .hero,
+  .initiatives-section,
+  .programme-section {
+    width: 100%;
   }
 
   .hero {
