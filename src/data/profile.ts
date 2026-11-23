@@ -93,18 +93,18 @@ export const researchInitiatives: ResearchInitiative[] = [
     id: 'reqs-labs',
     name: 'REQS Labs',
     shortName: 'REQS Labs',
-    role: 'Initiator',
+    role: 'Research network',
     summary:
-      'A virtual research collective pairing rigorous inquiry with agent-enabled prototyping and a stronger path to technology transfer.',
+      'A network of independent labs studying complex digital, financial, and biological systems, with a shared route from research to prototypes and technology transfer.',
     href: 'https://www.reqs.org'
   },
   {
     id: 'trust-lab',
     name: 'Trusted Agentic Systems Lab',
     shortName: 'Trust Lab',
-    role: 'Lab lead',
+    role: 'Research group',
     summary:
-      'A REQS member lab studying the security and resilience of autonomous agents, digital markets, and cyber-physical infrastructure.',
+      'The group Davor leads, studying how autonomous agents, blockchains, and connected infrastructure can be secured and trusted.',
     href: 'https://trust.reqs.org'
   }
 ];
@@ -129,25 +129,24 @@ export const trustLab = foundTrustLab;
 
 export const collaborationRoutes: CollaborationRoute[] = [
   {
-    title: 'Join the current research programme',
+    title: 'Research collaboration',
     summary:
-      'Trust Lab is the route for research participation in agent assurance, decentralized systems, and cyber-physical resilience.',
+      'Researchers who want to work on agent assurance, blockchain security, or cyber-physical resilience can join projects through Trust Lab.',
     href: 'https://trust.reqs.org/about',
     linkLabel: 'How Trust Lab works',
     external: true
   },
   {
-    title: 'Build through the research collective',
+    title: 'Labs and partners',
     summary:
-      'REQS Labs is the route for prospective member labs and collective-level research or technology-translation collaboration.',
+      'Research groups and organisations interested in joint research or technology transfer can work with the wider REQS Labs network.',
     href: 'https://www.reqs.org/collaborate',
-    linkLabel: 'Collaboration at REQS Labs',
+    linkLabel: 'Collaborate with REQS Labs',
     external: true
   },
   {
     title: 'Talks and institutional enquiries',
-    summary:
-      'Use the personal contact page for invited talks, academic leadership, graduate programmes, and institutional work.',
+    summary: 'For invited talks, graduate programme matters, and institutional work, write directly.',
     href: '/contact',
     linkLabel: 'Contact Davor'
   }
@@ -174,9 +173,16 @@ export const profile = {
   name: 'Davor Svetinovic',
   canonicalUrl: 'https://www.davors.com',
   scholarUrl: 'https://scholar.google.com/citations?user=LpV-B0IAAAAJ',
+  email: 'davor.svetinovic@ku.ac.ae',
   photo: {
     src: '/davor-talk.jpg',
     alt: 'Davor Svetinovic speaking at a lectern'
+  },
+  /** 1200x630 crop of the photo for link previews. */
+  socialImage: {
+    src: '/social-card.jpg',
+    width: 1200,
+    height: 630
   },
   title:
     'Computer science professor at Khalifa University and Visiting Fellow at ADIA Lab',
@@ -186,9 +192,10 @@ export const profile = {
   shortBio:
     'Davor Svetinovic is a computer science professor and Associate Chair for Graduate Studies at Khalifa University. He is also a Visiting Fellow at ADIA Lab.',
   longBio: [
-    'His current research asks how autonomous agents, multi-agent learning systems, smart contracts, and cyber-physical infrastructure can be made secure, auditable, and resilient.',
+    'He studies the security and resilience of autonomous agents, multi-agent systems, programmable blockchains, and cyber-physical infrastructure, using software and requirements engineering to examine trust, failure, and control in complex digital systems.',
     'He initiated REQS Labs and leads its first member lab, the Trusted Agentic Systems Lab.',
-    'He previously served as a Full Professor and Director of the Research Institute for Cryptoeconomics at WU Vienna, and held visiting and affiliated research roles at MIT. He holds a PhD in Computer Science from the University of Waterloo.'
+    'He previously served as a Full Professor and Director of the Research Institute for Cryptoeconomics at WU Vienna, and held visiting and affiliated research roles at MIT. He holds a PhD in Computer Science from the University of Waterloo.',
+    'He has published more than 100 papers in journals and conferences and is a Senior Member of IEEE and ACM.'
   ],
   researchAreas: researchThemes.map((theme) => theme.title),
   links: [

@@ -30,6 +30,7 @@ const { publications, headingLevel = 3 } = Astro.props;
             )}
           </h3>
         )}
+        {pub.summary && <p class="publication-summary">{pub.summary}</p>}
         <p class="authors">{pub.authors}</p>
         <p class="publication-meta">
           <span>{pub.venue}</span>

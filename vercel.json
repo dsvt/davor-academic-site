@@ -6,6 +6,11 @@
       "source": "/home",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/advising",
+      "destination": "/opportunities",
+      "permanent": true
     }
   ],
   "headers": [

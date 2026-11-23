@@ -11,9 +11,16 @@ import {
   researchInitiatives,
   trustLab
 } from '@data/profile';
+import { allNewsUrl, recentNews } from '@data/news';
 import { publicationsByYear } from '@data/publications';
 
 const featuredPublications = publicationsByYear.filter((publication) => publication.featured);
+const newsDate = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC'
+});
 ---
 <Layout title={profile.name} description={profile.tagline}>
   <section class="hero section" aria-labelledby="hero-title">
@@ -48,12 +55,33 @@ const featuredPublications = publicationsByYear.filter((publication) => publicat
     </div>
   </section>
 
+  <section class="section news-section" aria-labelledby="recent-title">
+    <div class="section-heading">
+      <h2 id="recent-title">Recent</h2>
+      <div class="link-row">
+        <ExternalLink href={allNewsUrl}>All news at {trustLab.shortName}</ExternalLink>
+      </div>
+    </div>
+    <ol class="news-list">
+      {recentNews.map((item) => (
+        <li>
+          <p class="news-meta">
+            <span>{item.kind}</span>
+            <time datetime={item.date}>{newsDate.format(new Date(item.date))}</time>
+          </p>
+          <h3><ExternalLink href={item.href}>{item.title}</ExternalLink></h3>
+          <p>{item.summary}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
   <section class="section initiatives-section">
     <div class="initiatives-intro">
-      <h2>Current research initiatives</h2>
+      <h2>Where the research happens</h2>
       <p>
-        REQS Labs provides the collective structure. Trust Lab carries the active programme,
-        people, methods, and public research record.
+        Davor initiated REQS Labs, a network of independent research labs, and leads its first
+        member lab, Trust Lab. Projects, people, and lab news live on their sites.
       </p>
     </div>
     <div class="initiative-ledger">

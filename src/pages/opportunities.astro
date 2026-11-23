@@ -1,0 +1,80 @@
+---
+import ExternalLink from '@components/ExternalLink.astro';
+import Layout from '@components/Layout.astro';
+import RoleList from '@components/RoleList.astro';
+import { collaborationRoutes, profile } from '@data/profile';
+
+const studentChecklist = [
+  'A short CV',
+  'The research theme you want to work on, and why',
+  'A paper, thesis, or project that shows your work',
+  'The Khalifa University programme you are applying to, and your intended start'
+];
+---
+<Layout
+  title="Opportunities"
+  description="Graduate study, research collaboration, and invited talks with Davor Svetinovic."
+>
+  <section class="section page-title">
+    <h1>Opportunities</h1>
+    <p class="lead">
+      Ways to study, research, or work with Davor: graduate study at Khalifa University, research
+      collaboration through Trust Lab and REQS Labs, and invited talks.
+    </p>
+  </section>
+
+  <section class="section split-section students-section" aria-labelledby="students-title">
+    <div class="prose-block">
+      <h2 id="students-title">Prospective students</h2>
+      <p>
+        Prospective MSc and PhD students interested in agentic AI security, blockchain security, or
+        cyber-physical security can apply through Khalifa University's graduate programmes in
+        computer science. Admission is handled by the university's postgraduate admissions office.
+      </p>
+      <p>
+        If your interests match the <a href="/research">research themes</a>, email{' '}
+        <a href={`mailto:${profile.email}`}>{profile.email}</a> with:
+      </p>
+      <ul class="checklist">
+        {studentChecklist.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+    <div class="leadership-block">
+      <h2>Applying</h2>
+      <ul class="plain-links">
+        <li>
+          <ExternalLink href="https://www.ku.ac.ae/academics/graduate-programs">
+            Graduate programmes
+          </ExternalLink>
+        </li>
+        <li>
+          <ExternalLink href="https://www.ku.ac.ae/postgraduate-admissions">
+            Postgraduate admissions
+          </ExternalLink>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section collaboration-routes" aria-label="Collaboration routes">
+    {collaborationRoutes.map((route) => (
+      <article>
+        <h2>{route.title}</h2>
+        <p>{route.summary}</p>
+        {route.external ? (
+          <ExternalLink href={route.href}>{route.linkLabel}</ExternalLink>
+        ) : (
+          <a href={route.href}>{route.linkLabel}</a>
+        )}
+      </article>
+    ))}
+  </section>
+
+  <section class="section split-section leadership-section">
+    <div>
+      <h2>Selected academic roles</h2>
+      <p>Graduate programme, institute, and interdisciplinary research leadership.</p>
+    </div>
+    <RoleList />
+  </section>
+</Layout>

@@ -5,10 +5,23 @@ export type Publication = {
   year: number;
   type: 'Journal' | 'Conference';
   url: string;
+  /** One plain-language sentence on what the work contributes. */
+  summary?: string;
   featured?: boolean;
 };
 
 export const publications: Publication[] = [
+  {
+    title: 'Large language models as human proxies',
+    authors: 'Nikita Karetnikov, Iyad Rahwan, Davor Svetinovic',
+    venue: 'Nature Computational Science',
+    year: 2026,
+    type: 'Journal',
+    url: 'https://doi.org/10.1038/s43588-026-01060-3',
+    summary:
+      'A review of four ways language models stand in for people, and why each use needs its own validity criteria.',
+    featured: true
+  },
   {
     title: 'MEV Detection for Ethereum Security: An Empirical Analysis on Agreement and Scalability',
     authors: 'Shraddha M. Naik, Huned Materwala, Davor Svetinovic',
@@ -16,6 +29,8 @@ export const publications: Publication[] = [
     year: 2026,
     type: 'Journal',
     url: 'https://doi.org/10.1109/TETC.2026.3700162',
+    summary:
+      'Compares methods for detecting maximal extractable value on Ethereum: how far they agree, and how well they scale.',
     featured: true
   },
   {
@@ -27,16 +42,8 @@ export const publications: Publication[] = [
     year: 2026,
     type: 'Journal',
     url: 'https://doi.org/10.1109/TIM.2026.3694725',
-    featured: true
-  },
-  {
-    title:
-      'Adaptive Privacy-Preserving Federated Learning for Robust IoT Systems: A Defense Against Data Poisoning Attacks',
-    authors: 'Sajjad Khan, Davor Svetinovic',
-    venue: 'Internet of Things and Cyber-Physical Systems',
-    year: 2026,
-    type: 'Journal',
-    url: 'https://doi.org/10.1016/j.iotcps.2026.03.006'
+    summary:
+      'An AI-based supervisory layer that validates measurements so microgrid protection stays reliable under cyberattack.'
   },
   {
     title: 'On the Security and Privacy Implications of Large Language Models: In-Depth Threat Analysis',
@@ -45,6 +52,8 @@ export const publications: Publication[] = [
     year: 2024,
     type: 'Conference',
     url: 'https://doi.org/10.1109/iThings-GreenCom-CPSCom-SmartData-Cybermatics62450.2024.00102',
+    summary:
+      'A structured analysis of the security and privacy threats that large language models introduce.',
     featured: true
   },
   {
@@ -54,7 +63,9 @@ export const publications: Publication[] = [
     venue: 'The ACM Web Conference',
     year: 2024,
     type: 'Conference',
-    url: 'https://doi.org/10.1145/3589334.3645431'
+    url: 'https://doi.org/10.1145/3589334.3645431',
+    summary:
+      'Measures censorship in Ethereum block production and what it means for the neutrality of transaction inclusion.'
   },
   {
     title: 'BaseSAP: Modular Stealth Address Protocol for Programmable Blockchains',
@@ -62,7 +73,9 @@ export const publications: Publication[] = [
     venue: 'IEEE Transactions on Information Forensics and Security',
     year: 2024,
     type: 'Journal',
-    url: 'https://doi.org/10.1109/TIFS.2024.3364081'
+    url: 'https://doi.org/10.1109/TIFS.2024.3364081',
+    summary:
+      'A modular stealth-address protocol that lets programmable-blockchain users receive payments at unlinkable addresses.'
   }
 ];
 
