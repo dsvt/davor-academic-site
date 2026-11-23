@@ -8,10 +8,11 @@ import { currentTheme, foundationThemes, trustLab } from '@data/profile';
   description="Research on agentic AI security, decentralized systems, and cyber-physical resilience."
 >
   <section class="section page-title">
-    <h1>Agentic AI security and resilient systems</h1>
+    <h1>Research</h1>
     <p class="lead">
-      The current programme connects autonomous-agent security with long-running work on blockchain,
-      cyber-physical systems, and software engineering.
+      Davor's work asks how autonomous systems can be trusted when they act across code, markets,
+      and physical infrastructure. It builds on long-running work in blockchain, cyber-physical
+      security, and software engineering.
     </p>
   </section>
 
@@ -24,12 +25,16 @@ import { currentTheme, foundationThemes, trustLab } from '@data/profile';
         and physical infrastructure. The research question is direct: how can these systems be
         audited, constrained, and kept resilient under adversarial conditions?
       </p>
-      <ExternalLink href={`${trustLab.href}/research`}>
-        Read the full programme at {trustLab.shortName}
-      </ExternalLink>
+      <p>
+        The programme runs at {trustLab.shortName}, where its research themes, people, and outputs
+        are kept up to date.
+      </p>
     </div>
-    <ul class="programme-topics">
-      {currentTheme.topics.map((topic) => <li>{topic}</li>)}
+    <ul class="programme-topics programme-links">
+      <li><ExternalLink href={`${trustLab.href}/research`}>Research themes</ExternalLink></li>
+      <li><ExternalLink href={`${trustLab.href}/people`}>People</ExternalLink></li>
+      <li><ExternalLink href={`${trustLab.href}/work`}>Projects and outputs</ExternalLink></li>
+      <li><ExternalLink href={`${trustLab.href}/news`}>Lab news</ExternalLink></li>
     </ul>
   </section>
 
