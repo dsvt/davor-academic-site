@@ -1,4 +1,5 @@
 ---
+import ExternalLink from '@components/ExternalLink.astro';
 import { navigation } from '@data/navigation';
 import { profile, researchInitiatives } from '@data/profile';
 import '@styles/global.css';
@@ -6,11 +7,13 @@ import '@styles/global.css';
 type Props = {
   title?: string;
   description?: string;
+  noindex?: boolean;
 };
 
 const {
   title = profile.name,
-  description = profile.tagline
+  description = profile.tagline,
+  noindex = false
 } = Astro.props;
 
 const pageTitle = title === profile.name ? profile.name : `${title} | ${profile.name}`;
@@ -43,12 +46,12 @@ const personSchema = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonical} />
+    {!noindex && <meta property="og:url" content={canonical} />}
     <meta property="og:image" content={socialImage} />
     <meta property="og:image:alt" content={profile.photo.alt} />
     <meta property="og:site_name" content={profile.name} />
@@ -80,9 +83,7 @@ const personSchema = {
         <p>© {new Date().getFullYear()} {profile.name}.</p>
         <nav aria-label="Research initiatives">
           {researchInitiatives.map((initiative) => (
-            <a href={initiative.href} target="_blank" rel="noopener noreferrer">
-              {initiative.shortName}
-            </a>
+            <ExternalLink href={initiative.href}>{initiative.shortName}</ExternalLink>
           ))}
         </nav>
       </div>

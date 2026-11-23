@@ -1,4 +1,5 @@
 ---
+import ExternalLink from '@components/ExternalLink.astro';
 import type { Publication } from '@data/publications';
 
 type Props = {
@@ -15,7 +16,7 @@ const { publications, headingLevel = 3 } = Astro.props;
         {headingLevel === 2 ? (
           <h2>
             {pub.url ? (
-              <a href={pub.url} target="_blank" rel="noopener noreferrer">{pub.title}</a>
+              <ExternalLink href={pub.url}>{pub.title}</ExternalLink>
             ) : (
               pub.title
             )}
@@ -23,7 +24,7 @@ const { publications, headingLevel = 3 } = Astro.props;
         ) : (
           <h3>
             {pub.url ? (
-              <a href={pub.url} target="_blank" rel="noopener noreferrer">{pub.title}</a>
+              <ExternalLink href={pub.url}>{pub.title}</ExternalLink>
             ) : (
               pub.title
             )}

@@ -3,6 +3,8 @@ export type ResearchTheme = {
   title: string;
   summary: string;
   topics: string[];
+  /** Exactly one theme is the current programme; the others are its foundations. */
+  current?: boolean;
 };
 
 export type CollaborationRoute = {
@@ -14,11 +16,20 @@ export type CollaborationRoute = {
 };
 
 export type ResearchInitiative = {
+  id: 'reqs-labs' | 'trust-lab';
   name: string;
   shortName: string;
   role: string;
   summary: string;
   href: string;
+};
+
+export type ProfileLink = {
+  label: string;
+  /** Academic profiles are listed as records; social profiles are contact routes. */
+  kind: 'academic' | 'social';
+  href: string;
+  primary: boolean;
 };
 
 export type LeadershipHighlight = {
@@ -31,6 +42,7 @@ export const researchThemes: ResearchTheme[] = [
   {
     slug: 'agentic-ai-security',
     title: 'Agentic AI security and resilience',
+    current: true,
     summary:
       'Current work examines how autonomous agents and multi-agent systems can be audited, secured, and made resilient when they interact with smart contracts, digital markets, and critical infrastructure.',
     topics: [
@@ -78,6 +90,7 @@ export const researchThemes: ResearchTheme[] = [
 
 export const researchInitiatives: ResearchInitiative[] = [
   {
+    id: 'reqs-labs',
     name: 'REQS Labs',
     shortName: 'REQS Labs',
     role: 'Initiator',
@@ -86,6 +99,7 @@ export const researchInitiatives: ResearchInitiative[] = [
     href: 'https://www.reqs.org'
   },
   {
+    id: 'trust-lab',
     name: 'Trusted Agentic Systems Lab',
     shortName: 'Trust Lab',
     role: 'Lab lead',
@@ -94,6 +108,24 @@ export const researchInitiatives: ResearchInitiative[] = [
     href: 'https://trust.reqs.org'
   }
 ];
+
+const currentThemes = researchThemes.filter((theme) => theme.current);
+if (currentThemes.length !== 1) {
+  throw new Error(`Expected exactly one current research theme, found ${currentThemes.length}.`);
+}
+
+/** The theme presented as the current programme. */
+export const currentTheme = currentThemes[0];
+/** The remaining themes, in data order, presented as research foundations. */
+export const foundationThemes = researchThemes.filter((theme) => !theme.current);
+
+const foundTrustLab = researchInitiatives.find((initiative) => initiative.id === 'trust-lab');
+if (!foundTrustLab) {
+  throw new Error("Research initiative with id 'trust-lab' is missing.");
+}
+
+/** The lab that hosts the current programme. */
+export const trustLab = foundTrustLab;
 
 export const collaborationRoutes: CollaborationRoute[] = [
   {
@@ -162,33 +194,39 @@ export const profile = {
   links: [
     {
       label: 'Google Scholar',
+      kind: 'academic',
       href: 'https://scholar.google.com/citations?user=LpV-B0IAAAAJ',
       primary: true
     },
     {
       label: 'LinkedIn',
+      kind: 'social',
       href: 'https://www.linkedin.com/in/davor-svetinovic/',
       primary: true
     },
     {
       label: 'ORCID',
+      kind: 'academic',
       href: 'https://orcid.org/0000-0002-3020-9556',
       primary: true
     },
     {
       label: 'DBLP',
+      kind: 'academic',
       href: 'https://dblp.org/pid/68/6669.html',
       primary: false
     },
     {
       label: 'ResearchGate',
+      kind: 'academic',
       href: 'https://www.researchgate.net/profile/Davor-Svetinovic',
       primary: false
     },
     {
       label: 'X',
+      kind: 'social',
       href: 'https://x.com/dsvetino',
       primary: false
     }
-  ]
+  ] satisfies ProfileLink[]
 };

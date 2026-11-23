@@ -1,6 +1,8 @@
 ---
+import ExternalLink from '@components/ExternalLink.astro';
 import Layout from '@components/Layout.astro';
-import { collaborationRoutes, leadershipHighlights } from '@data/profile';
+import RoleList from '@components/RoleList.astro';
+import { collaborationRoutes } from '@data/profile';
 ---
 <Layout
   title="Advising"
@@ -19,13 +21,11 @@ import { collaborationRoutes, leadershipHighlights } from '@data/profile';
       <article>
         <h2>{route.title}</h2>
         <p>{route.summary}</p>
-        <a
-          href={route.href}
-          target={route.external ? '_blank' : undefined}
-          rel={route.external ? 'noopener noreferrer' : undefined}
-        >
-          {route.linkLabel}
-        </a>
+        {route.external ? (
+          <ExternalLink href={route.href}>{route.linkLabel}</ExternalLink>
+        ) : (
+          <a href={route.href}>{route.linkLabel}</a>
+        )}
       </article>
     ))}
   </section>
@@ -35,14 +35,6 @@ import { collaborationRoutes, leadershipHighlights } from '@data/profile';
       <h2>Selected academic roles</h2>
       <p>Graduate programme, institute, and interdisciplinary research leadership.</p>
     </div>
-    <ul class="role-list">
-      {leadershipHighlights.map((item) => (
-        <li>
-          <strong>{item.role}</strong>
-          <span>{item.organization}</span>
-          {item.period && <span class="role-period">{item.period}</span>}
-        </li>
-      ))}
-    </ul>
+    <RoleList />
   </section>
 </Layout>

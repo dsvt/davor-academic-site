@@ -1,10 +1,7 @@
 ---
+import ExternalLink from '@components/ExternalLink.astro';
 import Layout from '@components/Layout.astro';
-import { researchInitiatives, researchThemes } from '@data/profile';
-
-const currentTheme = researchThemes[0];
-const supportingThemes = researchThemes.slice(1);
-const trustLab = researchInitiatives.find((initiative) => initiative.shortName === 'Trust Lab');
+import { currentTheme, foundationThemes, trustLab } from '@data/profile';
 ---
 <Layout
   title="Research"
@@ -13,7 +10,7 @@ const trustLab = researchInitiatives.find((initiative) => initiative.shortName =
   <section class="section page-title">
     <h1>Agentic AI security and resilient systems</h1>
     <p class="lead">
-      The current program connects autonomous-agent security with long-running work on blockchain,
+      The current programme connects autonomous-agent security with long-running work on blockchain,
       cyber-physical systems, and software engineering.
     </p>
   </section>
@@ -27,11 +24,9 @@ const trustLab = researchInitiatives.find((initiative) => initiative.shortName =
         and physical infrastructure. The research question is direct: how can these systems be
         audited, constrained, and kept resilient under adversarial conditions?
       </p>
-      {trustLab && (
-        <a href={`${trustLab.href}/research`} target="_blank" rel="noopener noreferrer">
-          Read the full programme at Trust Lab
-        </a>
-      )}
+      <ExternalLink href={`${trustLab.href}/research`}>
+        Read the full programme at {trustLab.shortName}
+      </ExternalLink>
     </div>
     <ul class="programme-topics">
       {currentTheme.topics.map((topic) => <li>{topic}</li>)}
@@ -46,7 +41,7 @@ const trustLab = researchInitiatives.find((initiative) => initiative.shortName =
       </p>
     </header>
     <div class="research-ledger">
-      {supportingThemes.map((theme) => (
+      {foundationThemes.map((theme) => (
         <article id={theme.slug}>
           <h3>{theme.title}</h3>
           <p>{theme.summary}</p>
