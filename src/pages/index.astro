@@ -1,19 +1,19 @@
 ---
+import ExternalLink from '@components/ExternalLink.astro';
 import Layout from '@components/Layout.astro';
 import ProfileLinks from '@components/ProfileLinks.astro';
 import PublicationList from '@components/PublicationList.astro';
+import RoleList from '@components/RoleList.astro';
 import {
-  leadershipHighlights,
+  currentTheme,
+  foundationThemes,
   profile,
   researchInitiatives,
-  researchThemes
+  trustLab
 } from '@data/profile';
 import { publicationsByYear } from '@data/publications';
 
 const featuredPublications = publicationsByYear.filter((publication) => publication.featured);
-const currentTheme = researchThemes[0];
-const supportingThemes = researchThemes.slice(1);
-const trustLab = researchInitiatives.find((initiative) => initiative.shortName === 'Trust Lab');
 ---
 <Layout title={profile.name} description={profile.tagline}>
   <section class="hero section" aria-labelledby="hero-title">
@@ -44,15 +44,7 @@ const trustLab = researchInitiatives.find((initiative) => initiative.shortName =
     </div>
     <div class="leadership-block">
       <h2>Selected leadership</h2>
-      <ul class="role-list">
-        {leadershipHighlights.map((item) => (
-          <li>
-            <strong>{item.role}</strong>
-            <span>{item.organization}</span>
-            {item.period && <span class="role-period">{item.period}</span>}
-          </li>
-        ))}
-      </ul>
+      <RoleList />
     </div>
   </section>
 
@@ -70,9 +62,7 @@ const trustLab = researchInitiatives.find((initiative) => initiative.shortName =
           <p class="initiative-role">{initiative.role}</p>
           <h3>{initiative.name}</h3>
           <p>{initiative.summary}</p>
-          <a href={initiative.href} target="_blank" rel="noopener noreferrer">
-            Visit {initiative.shortName}
-          </a>
+          <ExternalLink href={initiative.href}>Visit {initiative.shortName}</ExternalLink>
         </article>
       ))}
     </div>
@@ -85,16 +75,12 @@ const trustLab = researchInitiatives.find((initiative) => initiative.shortName =
       <p>{currentTheme.summary}</p>
       <div class="link-row research-links">
         <a href={`/research#${currentTheme.slug}`}>Research overview</a>
-        {trustLab && (
-          <a href={`${trustLab.href}/research`} target="_blank" rel="noopener noreferrer">
-            Programme at Trust Lab
-          </a>
-        )}
+        <ExternalLink href={`${trustLab.href}/research`}>Programme at {trustLab.shortName}</ExternalLink>
       </div>
     </article>
     <div class="research-foundations">
       <h2>Research foundations</h2>
-      {supportingThemes.map((theme) => (
+      {foundationThemes.map((theme) => (
         <article>
           <h3><a href={`/research#${theme.slug}`}>{theme.title}</a></h3>
           <p>{theme.summary}</p>
@@ -108,9 +94,7 @@ const trustLab = researchInitiatives.find((initiative) => initiative.shortName =
       <h2>Selected work</h2>
       <div class="link-row">
         <a href="/publications">Selected publications</a>
-        <a href={profile.scholarUrl} target="_blank" rel="noopener noreferrer">
-          Full list on Google Scholar
-        </a>
+        <ExternalLink href={profile.scholarUrl}>Full list on Google Scholar</ExternalLink>
       </div>
     </div>
     <PublicationList publications={featuredPublications} />

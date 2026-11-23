@@ -1,4 +1,5 @@
 ---
+import ExternalLink from '@components/ExternalLink.astro';
 import Layout from '@components/Layout.astro';
 import PublicationList from '@components/PublicationList.astro';
 import { profile } from '@data/profile';
@@ -12,9 +13,7 @@ import { publicationsByYear } from '@data/publications';
       cyber-physical resilience, and trustworthy digital infrastructure.
     </p>
     <p>
-      <a href={profile.scholarUrl} target="_blank" rel="noopener noreferrer">
-        View the complete record on Google Scholar
-      </a>
+      <ExternalLink href={profile.scholarUrl}>View the complete record on Google Scholar</ExternalLink>
     </p>
   </section>
 

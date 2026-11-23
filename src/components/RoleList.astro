@@ -1,0 +1,12 @@
+---
+import { leadershipHighlights } from '@data/profile';
+---
+<ul class="role-list">
+  {leadershipHighlights.map((item) => (
+    <li>
+      <strong>{item.role}</strong>
+      <span>{item.organization}</span>
+      {item.period && <span class="role-period">{item.period}</span>}
+    </li>
+  ))}
+</ul>

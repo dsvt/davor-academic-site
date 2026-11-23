@@ -1,16 +1,19 @@
 ---
+import ExternalLink from '@components/ExternalLink.astro';
 import Layout from '@components/Layout.astro';
 import ProfileLinks from '@components/ProfileLinks.astro';
 import { profile } from '@data/profile';
 
-const linkedin = profile.links.find((link) => link.label === 'LinkedIn');
-const xProfile = profile.links.find((link) => link.label === 'X');
+const socialLinks = profile.links.filter((link) => link.kind === 'social');
+const socialLabels = new Intl.ListFormat('en', { type: 'disjunction' }).format(
+  socialLinks.map((link) => link.label)
+);
 ---
 <Layout title="Contact" description="Contact Davor Svetinovic and view academic profiles.">
   <section class="section page-title">
     <h1>Contact</h1>
     <p class="lead">
-      For research collaboration, invited talks, and academic enquiries, use LinkedIn or X.
+      For research collaboration, invited talks, and academic enquiries, use {socialLabels}.
     </p>
   </section>
 
@@ -19,16 +22,9 @@ const xProfile = profile.links.find((link) => link.label === 'X');
       <h2>Research and academic enquiries</h2>
       <p>Include a short note about the topic, institution, and expected form of collaboration.</p>
       <div class="contact-links">
-        {linkedin && (
-          <a class="primary-link" href={linkedin.href} target="_blank" rel="noopener noreferrer">
-            LinkedIn
-          </a>
-        )}
-        {xProfile && (
-          <a class="primary-link" href={xProfile.href} target="_blank" rel="noopener noreferrer">
-            X
-          </a>
-        )}
+        {socialLinks.map((link) => (
+          <ExternalLink class="primary-link" href={link.href}>{link.label}</ExternalLink>
+        ))}
       </div>
     </div>
     <div class="profiles-block">

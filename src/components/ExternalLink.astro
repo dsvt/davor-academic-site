@@ -1,0 +1,11 @@
+---
+type Props = {
+  href: string;
+  class?: string;
+  me?: boolean;
+};
+
+const { href, class: className, me = false } = Astro.props;
+const rel = me ? 'me noopener noreferrer' : 'noopener noreferrer';
+---
+<a href={href} class={className} target="_blank" rel={rel}><slot /><span class="visually-hidden"> (opens in a new tab)</span></a>
